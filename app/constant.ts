@@ -1,0 +1,1 @@
+export let appMenu: Array<Object> = []

@@ -1,0 +1,24 @@
+<div id="sidebar-wrapper" class="style-2">
+  <div class="user-panel">
+    <div class="pull-left image">
+      <img src="img/avatar-user.png" class="img-circle avatar-user-menu" alt="User Image">
+    </div>
+    <div class="pull-right info menu-info-user">
+      {{userName}}
+    </div>
+  </div>
+
+  <hr />
+
+  <div style="clear: both;" class="text-danger">{{mensagem}}</div>
+
+  <!--
+  <div style="clear: both;">
+    <ul class="sidebar-nav" [innerHTML]="menu | filtroMenu"></ul>
+  </div>
+  -->
+
+  <div style="clear: both;">
+    <ul class="sidebar-nav" [innerHTML]="menu | filtroMenu"></ul>
+  </div>
+</div>

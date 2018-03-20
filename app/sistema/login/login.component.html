@@ -1,0 +1,60 @@
+<div id="wrapper">
+  <!-- Page Content -->
+  <div id="page-content-wrapper m0 p0">
+    <div class="container-fluid m0 p0">
+      <main class="main-login m0 p0">
+        <div class="panel panel-form-app">
+          <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Login</h4>
+          </div>
+          <div class="panel-body">
+            <form (submit)="efetuarLogin($event)">
+              <div class="text-center espacamento">
+                <img
+                  src="img/avatar-user.png"
+                  class="img-circle avatar-user-profile"
+                  alt="User Image">
+              </div>
+
+              <div class="espacamento text-danger">
+                {{mensagem}}
+              </div>
+
+              <div>
+                <div class="input-group espacamento {{hasError.login.hasError}}">
+                  <span class="input-group-addon">Login</span>
+                  <input
+                    type="text"
+                    name="nome"
+                    [(ngModel)]="usuario.login"
+                    (focus)="limparCampos('login')"
+                    class="form-control input-sm"
+                    autocomplete="off">
+                </div>
+                <p class="text-danger">{{hasError.login.msg}}</p>
+              </div>
+
+              <div>
+                <div class="input-group espacamento {{hasError.password.hasError}}">
+                  <span class="input-group-addon">password</span>
+                  <input
+                    type="password"
+                    name="password"
+                    [(ngModel)]="usuario.password"
+                    (focus)="limparCampos('password')"
+                    class="form-control input-sm"
+                    autocomplete="off">
+                </div>
+                <p class="text-danger">{{hasError.password.msg}}</p>
+              </div>
+
+              <div class="espacamento">
+                <button class="btn btn-block btn-sm btn-primary">Logar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

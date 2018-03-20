@@ -1,0 +1,68 @@
+<header class="main-header">
+  <nav id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="" onclick="openCloseMenu(event)">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" style="display: none;">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-bell"></span>
+            <span class="label label-warning label-warning-msg">*</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-profile-user">
+            <!-- User image -->
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span>{{userName}}</span>
+
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-profile-user p0">
+            <!-- User image -->
+              <li class="user-header text-center">
+                <img src="{{userImagem}}" class="img-circle avatar-user-profile" alt="User Image">
+                <p>
+                  <span>{{userName}}</span>
+                </p>
+                <p>
+                  <small>{{userCreatedAt}}</small>
+                </p>
+                <p>
+                  <small>{{userUpdatedAt}}</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="row m0">
+                  <div class="col-lg-4 m0 p0">
+                    <a href="#" class="btn btn-primary btn-sm btn-block" (click)="user($event)">Meus Dados</a>
+                  </div>
+                  <div class="col-lg-4 m0 p0">
+                    <a href="#" class="btn btn-primary btn-sm btn-block" (click)="perfil($event)">Meus Dados</a>
+                  </div>
+                  <div class="col-lg-4 m0 p0">
+                    <a href="#" class="btn btn-danger btn-sm btn-block" (click)="logout($event)">Sair</a>
+                  </div>
+                </div>
+              </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
