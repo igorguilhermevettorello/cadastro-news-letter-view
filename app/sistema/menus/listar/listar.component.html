@@ -1,0 +1,90 @@
+<div id="wrapper">
+  <menu></menu>
+  <cabecalho></cabecalho>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <main class="col-md-12 col-xs-12 p-l-12 p-t-12">
+        <ul class="breadcrumb">
+          <li><a href="#">Menu</a> <span class="divider"></span></li>
+          <li><a href="#">Menus</a> <span class="divider"></span></li>
+          <li class="active">Listar</li>
+        </ul>
+
+        <div class="panel panel-form-app">
+          <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Listagem Menus</h4>
+            <div class="btn-group pull-right">
+              <a href="#" class="btn btn-danger btn-xs" (click)="fecharView($event)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
+              <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
+              <strong>{{alertStatus}}!</strong> {{mensagem}}
+            </div>
+
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="home" class="tab-pane fade in active">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Opção</th>
+                      <th>Código</th>
+                      <th>Descrição</th>
+                      <th>Controlador</th>
+                      <th>Ação</th>
+                      <th>Vinculo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let list of lista">
+                      <td>
+                        <!--
+                        <a [routerLink]="['/cadastro']" class="btn btn-primary btn-sm">
+                          Editar
+                        </a>
+                        <a [routerLink]="['/cadastro']" class="btn btn-danger btn-sm">
+                          Deletar
+                        </a>
+                        -->
+                        <a href="#" (click)="redirect($event, 'editar', list)"  class="btn btn-primary btn-sm">
+                          Editar
+                        </a>
+                        <a href="#" (click)="redirect($event, 'deletar', list)"  class="btn btn-danger btn-sm">
+                          Deletar
+                        </a>
+                      </td>
+                      <td>{{list.id}}</td>
+                      <td>{{list.descricao}}</td>
+                      <td>{{list.controller}}</td>
+                      <td>{{list.acao}}</td>
+                      <td>{{list.vinculo}}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="6">
+                        <ul class="pagination pagination-sm">
+                          <li *ngFor="let pagina of paginacao"><a href="#" (click)="redirect($event, 'paginar', pagina)">{{pagina.descricao}}</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

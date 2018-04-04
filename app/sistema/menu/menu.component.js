@@ -20,10 +20,9 @@ var MenuComponent = (function () {
         this.mensagem = null;
         this.menu = null;
         this.userName = null;
-        this.__menu = [];
-        this.userName =
-            (localStorage.getItem("userName") === null) ?
-                null : localStorage.getItem("userName");
+        // __menu: Array<Object> = [];
+        this.menus = [];
+        this.menus_aux = [];
     }
     MenuComponent.prototype.setUserName = function (userName) {
         if (localStorage.getItem("userName") === null)
@@ -31,7 +30,8 @@ var MenuComponent = (function () {
         this.userName = userName;
     };
     MenuComponent.prototype.ngOnInit = function () {
-        this.getMenu(1);
+        this.getMenuUser();
+        //this.getMenu(1);
         //this.menu = '<li class="treeview" title="2-6"><a href="#"><i class="fa fa-share"></i><span>Menu</span><span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu"><li class="treeview li-2" title="4-5"><a href="#" style="padding-left: 15px">Usuários<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-2"><li class="treeview li-4"><a href="#" style="padding-left: 30px">cadastrar</a></li><li class="treeview li-5"><a href="#" style="padding-left: 30px">listar</a></li></ul></li><li class="treeview li-6" title="7-8"><a href="#" style="padding-left: 15px">Pessoas<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-6"><li class="treeview li-7"><a href="#" style="padding-left: 30px">cadastrar</a></li><li class="treeview li-8" title="9-10"><a href="#" style="padding-left: 30px">listar<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-8"><li class="treeview li-9" title="11-12"><a href="#" style="padding-left: 45px">simples<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-9"><li class="treeview li-11"><a href="#" style="padding-left: 60px">nome</a></li><li class="treeview li-12" title="13"><a href="#" style="padding-left: 60px">sei lá<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-12"><li class="treeview li-13"><a href="#" style="padding-left: 75px">sei la 2</a></li></ul></li></ul></li><li class="treeview li-10"><a href="#" style="padding-left: 45px">elaborada</a></li></ul></li></ul></li></ul></li>';
     };
     MenuComponent.prototype.ngAfterViewInit = function () {
@@ -102,34 +102,108 @@ var MenuComponent = (function () {
             $(".treeview").hide().first().show();
         }
     };
-    MenuComponent.prototype.getMenu = function (id) {
+    //  public getMenu(id) {
+    //
+    //    let headers = new Headers();
+    //    let authToken = localStorage.getItem('auth_token');
+    //    headers.append('Content-Type', 'application/json');
+    //    headers.append('x-access-token', authToken);
+    //
+    //    let url = this.globals.url + '/menus/menu/' + id;
+    //    this.http.get(url, { headers: headers })
+    //      .subscribe((res) => {
+    //
+    //        let menu = res.json();
+    //
+    //        this.__menu.push(menu);
+    //
+    //        localStorage.setItem('menu', JSON.stringify(this.__menu));
+    //
+    //        if (id == 1) this.createHtmlMenu(menu);
+    //
+    //        if (typeof menu.sub != 'undefined') menu.sub.map(item => this.getMenu(item.id));
+    //
+    //      }, error =>  {
+    //        console.log('error', error);
+    //        if (error.status == 0) {
+    //         this.mensagem = "Não foi possível conectar com o servidor.";
+    //        } else if (error.status == 401) {
+    //         this.mensagem = "Usuário não encotrado.";
+    //        } else {
+    //          this.mensagem = "Erro inesperado. Entre em contato com administrador.";
+    //        }
+    //      });
+    //  }
+    MenuComponent.prototype.getMenuUser = function () {
         var _this = this;
         var headers = new http_1.Headers();
         var authToken = localStorage.getItem('auth_token');
         headers.append('Content-Type', 'application/json');
         headers.append('x-access-token', authToken);
-        var url = this.globals.url + '/menus/menu/' + id;
+        var url = this.globals.url + '/menu/user';
         this.http.get(url, { headers: headers })
             .subscribe(function (res) {
-            var menu = res.json();
-            _this.__menu.push(menu);
-            localStorage.setItem('menu', JSON.stringify(_this.__menu));
-            if (id == 1)
-                _this.createHtmlMenu(menu);
-            if (typeof menu.sub != 'undefined')
-                menu.sub.map(function (item) { return _this.getMenu(item.id); });
+            _this.menus_aux = res.json();
+            _this.organizarMenu(null);
         }, function (error) {
             console.log('error', error);
             if (error.status == 0) {
-                _this.mensagem = "Não foi possível conectar com o servidor.";
+                _this.setMensagem('alert-danger', 'Não foi possível conectar com o servidor.', 'Erro', null);
             }
             else if (error.status == 401) {
-                _this.mensagem = "Usuário não encotrado.";
+                _this.setMensagem('alert-danger', 'Usuário não encotrado.', 'Erro', null);
+            }
+            else if (error.status == 400) {
+                var msg = error.json();
+                if (typeof msg.msg == "undefined") {
+                    _this.setMensagem('alert-danger', 'Usuário não encotrado.', 'Erro', null);
+                }
+                else {
+                    _this.setMensagem('alert-danger', msg.msg, 'Erro', null);
+                }
+            }
+            else if (error.status == 500) {
+                _this.setMensagem('alert-danger', 'Ocorreu um erro interno. Nossa equipe já está trabalhando para resolve-lo.', 'Erro', null);
             }
             else {
-                _this.mensagem = "Erro inesperado. Entre em contato com administrador.";
+                _this.setMensagem('alert-danger', 'Erro inesperado. Entre em contato com administrador.', 'Erro', null);
             }
         });
+    };
+    MenuComponent.prototype.organizarMenu = function (item) {
+        var _this = this;
+        item = (typeof item == "undefined" || item === null) ? this.menus_aux.filter(function (item, index) { return index == _this.menus.length; }).map(function (item) { return item; }) : item;
+        item = (typeof item.length == "undefined") ? item : item[0];
+        if (this.menus.length == 0) {
+            item.padding = 0;
+            item.color = (item.ativo) ? '#000000' : '#FFFFFF';
+            this.menus.push(item);
+        }
+        this.menus_aux.filter(function (mn) { return mn.menu_id == item.id; }).map(function (mn) {
+            mn.padding = (typeof item.padding == "undefined") ? 15 : item.padding + 15;
+            mn.color = (item.ativo) ? '#000000' : '#FFFFFF';
+            _this.menus.push(mn);
+            _this.organizarMenu(mn);
+        });
+    };
+    MenuComponent.prototype.setMensagem = function (status, msg, alertStatus, event) {
+        if (event)
+            event.preventDefault();
+        //this.status = status;
+        this.mensagem = msg;
+        //this.alertStatus = alertStatus;
+    };
+    MenuComponent.prototype.redirect = function (event, mn) {
+        event.preventDefault();
+        console.log("./" + mn.controller + "-" + mn.acao);
+        if (mn.controller != "" && mn.controller != null) {
+            if (mn.acao != "" && mn.acao != null) {
+                this.router.navigate([("./" + mn.controller + "-" + mn.acao)]);
+            }
+            else {
+                this.router.navigate([("./" + mn.controller)]);
+            }
+        }
     };
     __decorate([
         core_1.Input(), 

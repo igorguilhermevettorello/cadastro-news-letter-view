@@ -37,6 +37,11 @@ var UserService = (function () {
     };
     UserService.prototype.logout = function () {
         localStorage.removeItem('auth_token');
+        localStorage.removeItem('menu');
+        localStorage.removeItem('userCreatedAt');
+        localStorage.removeItem('userImagem');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userUpdatedAt');
         this.loggedIn = false;
     };
     UserService.prototype.isLoggedIn = function () {

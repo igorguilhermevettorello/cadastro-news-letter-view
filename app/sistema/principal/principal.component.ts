@@ -28,7 +28,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit  {
     this.getInfoUser();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() { }
 
@@ -73,5 +73,4 @@ export class PrincipalComponent implements OnInit, AfterViewInit  {
   public dataParaTexto(data) {
     return `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`;
   }
-
 }

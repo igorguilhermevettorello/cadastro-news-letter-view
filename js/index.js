@@ -33,7 +33,7 @@ let actionMenu = function(event) {
         let redirect = null;
         if (menuIds.indexOf(item.id) == -1) {
           str = ``;
-          redirect = `/sistema/${item.controller}-${item.acao}`;
+          redirect = `/cadastro-habitacional-view/${item.controller}-${item.acao}`;
         } else {
           redirect = `#`;
           str = `<span class="pull-right pull-right-menu">

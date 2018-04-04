@@ -1,0 +1,1702 @@
+<div id="wrapper">
+  <menu></menu>
+  <cabecalho></cabecalho>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <main class="col-md-12 col-xs-12 p-l-12 p-t-12">
+
+        <ul class="breadcrumb">
+          <li><a href="#">Menus</a> <span class="divider"></span></li>
+          <li><a href="#">Habitaçoes</a> <span class="divider"></span></li>
+          <li class="active">Cadastrar</li>
+        </ul>
+
+        <div class="panel panel-form-app">
+          <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Cadastrar</h4>
+            <div class="btn-group pull-right">
+              <a href="#" class="btn btn-danger btn-xs" (click)="fecharView($event)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="panel-body">
+
+              <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
+                <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
+                <strong>{{alertStatus}}!</strong> {{mensagem}}
+              </div>
+
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home" id="tab-info">Titular 1</a></li>
+              <li><a data-toggle="tab" href="#menu1">Titular 2</a></li>
+              <li><a data-toggle="tab" href="#menu3">Composição Familiar</a></li>
+              <li><a data-toggle="tab" href="#menu2">Informações Família</a></li>
+              <li><a data-toggle="tab" href="#menu4">Documentos</a></li>
+            </ul>
+            <form (submit)="beforeSave($event)">
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                      <div>
+                        <div class="input-group espacamento {{hasError.titular_1.hasError}}">
+                          <span class="input-group-addon">Titular </span>
+                          <input
+                            type="text"
+                            name="titular_1"
+                            [(ngModel)]="habitacoes.titular_1"
+                            (focus)="limparCampos('titular_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.titular_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.naturalidade_1.hasError}}">
+                          <span class="input-group-addon">Naturalidade</span>
+                          <input
+                            type="text"
+                            name="naturalidade_1"
+                            [(ngModel)]="habitacoes.naturalidade_1"
+                            (focus)="limparCampos('naturalidade_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.naturalidade_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.pai_1.hasError}}">
+                          <span class="input-group-addon">Pai</span>
+                          <input
+                            type="text"
+                            name="pai_1"
+                            [(ngModel)]="habitacoes.pai_1"
+                            (focus)="limparCampos('pai_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.pai_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.mae_1.hasError}}">
+                          <span class="input-group-addon">Mãe</span>
+                          <input
+                            type="text"
+                            name="mae_1"
+                            [(ngModel)]="habitacoes.mae_1"
+                            (focus)="limparCampos('mae_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.mae_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.nascimento_1.hasError}}">
+                          <span class="input-group-addon">Nascimento</span>
+                          <input
+                            type="text"
+                            name="nascimento_1"
+                            id="nascimento_1"
+                            [(ngModel)]="habitacoes.nascimento_1"
+                            (focus)="limparCampos('nascimento_1');"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.nascimento_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.estado_civil_1.hasError}}">
+                          <span class="input-group-addon">Estado Civil</span>
+                          <select
+                            [(ngModel)]="habitacoes.estado_civil_1"
+                            (focus)="limparCampos('estado_civil_1')"
+                            name="estado_civil_1"
+                            class="form-control input-sm">
+                            <option *ngFor="let ec of estadoCivil" [value]="ec.descricao"> {{ ec.descricao }} </option>
+                          </select>
+                        </div>
+                        <p class="text-danger">{{hasError.estado_civil_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.escolaridade_1.hasError}}">
+                          <span class="input-group-addon">Escolaridade</span>
+                          <select
+                            [(ngModel)]="habitacoes.escolaridade_1"
+                            (focus)="limparCampos('escolaridade_1')"
+                            name="escolaridade_1"
+                            class="form-control input-sm">
+                            <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.descricao"> {{ escolaridade.descricao }} </option>
+                          </select>
+                        </div>
+                        <p class="text-danger">{{hasError.escolaridade_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.cpf_1.hasError}}">
+                          <span class="input-group-addon">CPF</span>
+                          <input
+                            type="text"
+                            name="cpf_1"
+                            id="cpf_1"
+                            [(ngModel)]="habitacoes.cpf_1"
+                            (focus)="limparCampos('cpf_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.cpf_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.rg_1.hasError}}">
+                          <span class="input-group-addon">RG</span>
+                          <input
+                            type="text"
+                            name="rg_1"
+                            [(ngModel)]="habitacoes.rg_1"
+                            (focus)="limparCampos('rg_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.rg_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.viculo_titular_1_com_titular_2.hasError}}">
+                          <span class="input-group-addon">Vínculo com Tiular 2</span>
+                          <input
+                            type="text"
+                            name="viculo_titular_1_com_titular_2"
+                            [(ngModel)]="habitacoes.viculo_titular_1_com_titular_2"
+                            (focus)="limparCampos('viculo_titular_1_com_titular_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.viculo_titular_1_com_titular_2.msg}}</p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.atividade_1.hasError}}">
+                          <span class="input-group-addon">Atividade</span>
+                          <input
+                            type="text"
+                            name="atividade_1"
+                            [(ngModel)]="habitacoes.atividade_1"
+                            (focus)="limparCampos('atividade_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.atividade_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.renda_1.hasError}}">
+                          <span class="input-group-addon">Renda</span>
+                          <input
+                            type="text"
+                            name="renda_1"
+                            id="renda_1"
+                            [(ngModel)]="habitacoes.renda_1"
+                            (focus)="limparCampos('renda_1')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.renda_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.empresa_1.hasError}}">
+                          <span class="input-group-addon">Empresa</span>
+                          <input
+                            type="text"
+                            name="empresa_1"
+                            [(ngModel)]="habitacoes.empresa_1"
+                            (focus)="limparCampos('empresa_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.empresa_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.informal_1.hasError}}">
+                          <span class="input-group-addon s60">Informal</span>
+                          <button type="button" class="btn {{habitacoes.informal_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.informal_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.informal_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.informal_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.informal_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.informal_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.informal_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.formal_1.hasError}}">
+                          <span class="input-group-addon s60">formal</span>
+                          <button type="button" class="btn {{habitacoes.formal_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.formal_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.formal_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.formal_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.formal_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.formal_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.formal_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.titular.hasError}}">
+                          <span class="input-group-addon">Titular</span>
+                          <select
+                            [(ngModel)]="habitacoes.titular"
+                            (focus)="limparCampos('titular')"
+                            name="titular"
+                            class="form-control input-sm">
+                            <option *ngFor="let tc of titularChefe" [value]="tc.descricao"> {{ tc.descricao }} </option>
+                          </select>
+                        </div>
+                        <p class="text-danger">{{hasError.titular.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.pcd_1.hasError}}">
+                          <span class="input-group-addon s60">PCD</span>
+                          <button type="button" class="btn {{habitacoes.pcd_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.pcd_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.pcd_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.pcd_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.pcd_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.pcd_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.pcd_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.pcd_qual_1.hasError}}">
+                          <span class="input-group-addon">Qual é o tipo de deficiência:</span>
+                          <input
+                            type="text"
+                            name="pcd_qual_1"
+                            [(ngModel)]="habitacoes.pcd_qual_1"
+                            (focus)="limparCampos('pcd_qual_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.pcd_qual_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.doenca_grave_1.hasError}}">
+                          <span class="input-group-addon s60">Doença Grave:</span>
+                          <button type="button" class="btn {{habitacoes.doenca_grave_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.doenca_grave_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.doenca_grave_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.doenca_grave_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.doenca_grave_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.doenca_grave_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.doenca_grave_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.doenca_qual_1.hasError}}">
+                          <span class="input-group-addon">Qual é o tipo de doença grave:</span>
+                          <input
+                            type="text"
+                            name="doenca_qual_1"
+                            [(ngModel)]="habitacoes.doenca_qual_1"
+                            (focus)="limparCampos('doenca_qual_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.doenca_qual_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bolsa_familia_1.hasError}}">
+                          <span class="input-group-addon s60">Bolsa Família:</span>
+                          <button type="button" class="btn {{habitacoes.bolsa_familia_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bolsa_familia_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.bolsa_familia_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.bolsa_familia_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bolsa_familia_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.bolsa_familia_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.bolsa_familia_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bolsa_familia_valor_1.hasError}}">
+                          <span class="input-group-addon">Valor Bolsa Família:</span>
+                          <input
+                            type="text"
+                            name="bolsa_familia_valor_1"
+                            id="bolsa_familia_valor_1"
+                            [(ngModel)]="habitacoes.bolsa_familia_valor_1"
+                            (focus)="limparCampos('bolsa_familia_valor_1')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.bolsa_familia_valor_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bpc_1.hasError}}">
+                          <span class="input-group-addon s60">BPC:</span>
+                          <button type="button" class="btn {{habitacoes.bpc_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bpc_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.bpc_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.bpc_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bpc_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.bpc_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.bpc_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bpc_valor_1.hasError}}">
+                          <span class="input-group-addon">Valor BPC:</span>
+                          <input
+                            type="text"
+                            name="bpc_valor_1"
+                            id="bpc_valor_1"
+                            [(ngModel)]="habitacoes.bpc_valor_1"
+                            (focus)="limparCampos('bpc_valor_1')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.bpc_valor_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.inscrito_cadastro_unico_1.hasError}}">
+                          <span class="input-group-addon s60">Inscrito Cadastro Único:</span>
+                          <button type="button" class="btn {{habitacoes.inscrito_cadastro_unico_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.inscrito_cadastro_unico_1 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.inscrito_cadastro_unico_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.inscrito_cadastro_unico_1 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.inscrito_cadastro_unico_1 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.inscrito_cadastro_unico_1 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.inscrito_cadastro_unico_1.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.inscricao_cadastro_unico_1.hasError}}">
+                          <span class="input-group-addon">Inscrição Cadastro Único:</span>
+                          <input
+                            type="text"
+                            name="inscricao_cadastro_unico_1"
+                            [(ngModel)]="habitacoes.inscricao_cadastro_unico_1"
+                            (focus)="limparCampos('inscricao_cadastro_unico_1')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.inscricao_cadastro_unico_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                  <!-- titular 2 -->
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                      <div>
+                        <div class="input-group espacamento {{hasError.titular_2.hasError}}">
+                          <span class="input-group-addon">Titular </span>
+                          <input
+                            type="text"
+                            name="titular_2"
+                            [(ngModel)]="habitacoes.titular_2"
+                            (focus)="limparCampos('titular_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.titular_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.naturalidade_2.hasError}}">
+                          <span class="input-group-addon">Naturalidade</span>
+                          <input
+                            type="text"
+                            name="naturalidade_2"
+                            [(ngModel)]="habitacoes.naturalidade_2"
+                            (focus)="limparCampos('naturalidade_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.naturalidade_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.pai_2.hasError}}">
+                          <span class="input-group-addon">Pai</span>
+                          <input
+                            type="text"
+                            name="pai_2"
+                            [(ngModel)]="habitacoes.pai_2"
+                            (focus)="limparCampos('pai_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.pai_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.mae_2.hasError}}">
+                          <span class="input-group-addon">Mãe</span>
+                          <input
+                            type="text"
+                            name="mae_2"
+                            [(ngModel)]="habitacoes.mae_2"
+                            (focus)="limparCampos('mae_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.mae_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.nascimento_2.hasError}}">
+                          <span class="input-group-addon">Nascimento</span>
+                          <input
+                            type="text"
+                            name="nascimento_2"
+                            id="nascimento_2"
+                            [(ngModel)]="habitacoes.nascimento_2"
+                            (focus)="limparCampos('nascimento_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.nascimento_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.estado_civil_2.hasError}}">
+                          <span class="input-group-addon">Estado Civil</span>
+                          <select
+                            [(ngModel)]="habitacoes.estado_civil_2"
+                            (focus)="limparCampos('estado_civil_2')"
+                            name="estado_civil_2"
+                            class="form-control input-sm">
+                            <option *ngFor="let ec of estadoCivil" [value]="ec.descricao"> {{ ec.descricao }} </option>
+                          </select>
+                        </div>
+                        <p class="text-danger">{{hasError.estado_civil_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.escolaridade_2.hasError}}">
+                          <span class="input-group-addon">Escolaridade</span>
+                          <select
+                            [(ngModel)]="habitacoes.escolaridade_2"
+                            (focus)="limparCampos('escolaridade_2')"
+                            name="escolaridade_2"
+                            class="form-control input-sm">
+                            <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.descricao"> {{ escolaridade.descricao }} </option>
+                          </select>
+                        </div>
+                        <p class="text-danger">{{hasError.escolaridade_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.cpf_2.hasError}}">
+                          <span class="input-group-addon">CPF</span>
+                          <input
+                            type="text"
+                            name="cpf_2"
+                            id="cpf_2"
+                            [(ngModel)]="habitacoes.cpf_2"
+                            (focus)="limparCampos('cpf_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.cpf_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.rg_2.hasError}}">
+                          <span class="input-group-addon">RG</span>
+                          <input
+                            type="text"
+                            name="rg_2"
+                            [(ngModel)]="habitacoes.rg_2"
+                            (focus)="limparCampos('rg_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.rg_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.viculo_titular_2_com_titular_1.hasError}}">
+                          <span class="input-group-addon">Vínculo com Tiular 2</span>
+                          <input
+                            type="text"
+                            name="viculo_titular_2_com_titular_1"
+                            [(ngModel)]="habitacoes.viculo_titular_2_com_titular_1"
+                            (focus)="limparCampos('viculo_titular_2_com_titular_1')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.viculo_titular_2_com_titular_1.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.atividade_2.hasError}}">
+                          <span class="input-group-addon">Atividade</span>
+                          <input
+                            type="text"
+                            name="atividade_2"
+                            [(ngModel)]="habitacoes.atividade_2"
+                            (focus)="limparCampos('atividade_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.atividade_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.renda_2.hasError}}">
+                          <span class="input-group-addon">Renda</span>
+                          <input
+                            type="text"
+                            name="renda_2"
+                            id="renda_2"
+                            [(ngModel)]="habitacoes.renda_2"
+                            (focus)="limparCampos('renda_2')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.renda_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.empresa_2.hasError}}">
+                          <span class="input-group-addon">Empresa</span>
+                          <input
+                            type="text"
+                            name="empresa_2"
+                            [(ngModel)]="habitacoes.empresa_2"
+                            (focus)="limparCampos('empresa_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.empresa_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.informal_2.hasError}}">
+                          <span class="input-group-addon s60">Informal</span>
+                          <button type="button" class="btn {{habitacoes.informal_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.informal_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.informal_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.informal_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.informal_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.informal_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.informal_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.formal_2.hasError}}">
+                          <span class="input-group-addon s60">formal</span>
+                          <button type="button" class="btn {{habitacoes.formal_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.formal_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.formal_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.formal_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.formal_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.formal_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.formal_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.pcd_2.hasError}}">
+                          <span class="input-group-addon s60">PCD</span>
+                          <button type="button" class="btn {{habitacoes.pcd_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.pcd_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.pcd_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.pcd_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.pcd_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.pcd_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.pcd_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.pcd_qual_2.hasError}}">
+                          <span class="input-group-addon">Qual é o tipo de deficiência:</span>
+                          <input
+                            type="text"
+                            name="pcd_qual_2"
+                            [(ngModel)]="habitacoes.pcd_qual_2"
+                            (focus)="limparCampos('pcd_qual_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.pcd_qual_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.doenca_grave_2.hasError}}">
+                          <span class="input-group-addon s60">Doença Grave:</span>
+                          <button type="button" class="btn {{habitacoes.doenca_grave_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.doenca_grave_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.doenca_grave_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.doenca_grave_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.doenca_grave_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.doenca_grave_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.doenca_grave_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.doenca_qual_2.hasError}}">
+                          <span class="input-group-addon">Qual é o tipo de doença grave:</span>
+                          <input
+                            type="text"
+                            name="doenca_qual_2"
+                            [(ngModel)]="habitacoes.doenca_qual_2"
+                            (focus)="limparCampos('doenca_qual_2')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.doenca_qual_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bolsa_familia_2.hasError}}">
+                          <span class="input-group-addon s60">Bolsa Família:</span>
+                          <button type="button" class="btn {{habitacoes.bolsa_familia_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bolsa_familia_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.bolsa_familia_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.bolsa_familia_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bolsa_familia_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.bolsa_familia_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.bolsa_familia_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bolsa_familia_valor_2.hasError}}">
+                          <span class="input-group-addon">Valor Bolsa Família:</span>
+                          <input
+                            type="text"
+                            name="bolsa_familia_valor_2"
+                            id="bolsa_familia_valor_2"
+                            [(ngModel)]="habitacoes.bolsa_familia_valor_2"
+                            (focus)="limparCampos('bolsa_familia_valor_2')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.bolsa_familia_valor_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bpc_2.hasError}}">
+                          <span class="input-group-addon s60">BPC:</span>
+                          <button type="button" class="btn {{habitacoes.bpc_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bpc_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.bpc_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.bpc_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.bpc_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.bpc_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.bpc_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.bpc_valor_2.hasError}}">
+                          <span class="input-group-addon">Valor BPC:</span>
+                          <input
+                            type="text"
+                            name="bpc_valor_2"
+                            id="bpc_valor_2"
+                            [(ngModel)]="habitacoes.bpc_valor_2"
+                            (focus)="limparCampos('bpc_valor_2')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.bpc_valor_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                      <div>
+                        <div class="input-group espacamento {{hasError.inscrito_cadastro_unico_2.hasError}}">
+                          <span class="input-group-addon s60">Inscrito Cadastro Único:</span>
+                          <button type="button" class="btn {{habitacoes.inscrito_cadastro_unico_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.inscrito_cadastro_unico_2 = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.inscrito_cadastro_unico_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.inscrito_cadastro_unico_2 ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.inscrito_cadastro_unico_2 = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.inscrito_cadastro_unico_2 ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.inscrito_cadastro_unico_2.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                      <div>
+                        <div class="input-group espacamento {{hasError.inscricao_cadastro_unico_2.hasError}}">
+                          <span class="input-group-addon">Inscrição Cadastro Único:</span>
+                          <input
+                            type="text"
+                            name="inscricao_cadastro_unico_2"
+                            [(ngModel)]="habitacoes.inscricao_cadastro_unico_2"
+                            (focus)="limparCampos('inscricao_cadastro_unico_2')"
+                            class="form-control input-sm text-right"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.inscricao_cadastro_unico_2.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#endereco" id="tab-endereco">Endereço</a></li>
+                    <li><a data-toggle="tab" href="#aba-progrmas-sociais">Programas Sociais</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="endereco" class="tab-pane fade in active">
+
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.endereco.hasError}}">
+                              <span class="input-group-addon">Endereço</span>
+                              <input
+                                type="text"
+                                name="endereco"
+                                [(ngModel)]="habitacoes.endereco"
+                                (focus)="limparCampos('endereco')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.endereco.msg}}</p>
+                          </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                          <div>
+                            <div class="input-group espacamento {{hasError.numero.hasError}}">
+                              <span class="input-group-addon">Nº </span>
+                              <input
+                                type="text"
+                                name="numero"
+                                [(ngModel)]="habitacoes.numero"
+                                (focus)="limparCampos('numero')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.numero.msg}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                          <div>
+                            <div class="input-group espacamento {{hasError.bairro.hasError}}">
+                              <span class="input-group-addon">Bairro </span>
+                              <input
+                                type="text"
+                                name="bairro"
+                                [(ngModel)]="habitacoes.bairro"
+                                (focus)="limparCampos('bairro')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.bairro.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                          <div>
+                            <div class="input-group espacamento {{hasError.tempo_moradia_anos.hasError}}">
+                              <span class="input-group-addon">Tempo de moradia em Campo Bom</span>
+                              <span class="input-group-addon">Anos</span>
+                              <input
+                                type="text"
+                                name="tempo_moradia_anos"
+                                [(ngModel)]="habitacoes.tempo_moradia_anos"
+                                (focus)="limparCampos('tempo_moradia_anos')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                              <span class="input-group-addon">Meses</span>
+                              <input
+                                type="text"
+                                name="tempo_moradia_meses"
+                                [(ngModel)]="habitacoes.tempo_moradia_meses"
+                                (focus)="limparCampos('tempo_moradia_anos')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.tempo_moradia_anos.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.procedencia_municipio.hasError}}">
+                              <span class="input-group-addon">Município de Procedência</span>
+                              <input
+                                type="text"
+                                name="procedencia_municipio"
+                                [(ngModel)]="habitacoes.procedencia_municipio"
+                                (focus)="limparCampos('procedencia_municipio')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.procedencia_municipio.msg}}</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.procedencia_uf.hasError}}">
+                              <span class="input-group-addon">UF de Procedência</span>
+                              <select
+                                [(ngModel)]="habitacoes.procedencia_uf"
+                                (focus)="limparCampos('procedencia_uf')"
+                                name="procedencia_uf"
+                                class="form-control input-sm">
+                                <option *ngFor="let uf of ufs" [value]="uf.value"> {{ uf.descricao }} </option>
+                              </select>
+                            </div>
+                            <p class="text-danger">{{hasError.procedencia_uf.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.cooperativa_inscricao.hasError}}">
+                              <span class="input-group-addon s50">Possui inscrição em Cooperativa sem definição do lote</span>
+                              <button type="button" class="btn {{habitacoes.cooperativa_inscricao ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.cooperativa_inscricao = true;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{habitacoes.cooperativa_inscricao ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Sim</span>
+                              </button>
+                              <button type="button" class="btn {{!habitacoes.cooperativa_inscricao ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.cooperativa_inscricao = false;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{!habitacoes.cooperativa_inscricao ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Não</span>
+                              </button>
+                            </div>
+                            <p class="text-danger">{{hasError.cooperativa_inscricao.msg}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.cooperativa_nome.hasError}}">
+                              <span class="input-group-addon">Cooperativa</span>
+                              <input
+                                type="text"
+                                name="cooperativa_nome"
+                                [(ngModel)]="habitacoes.cooperativa_nome"
+                                (focus)="limparCampos('cooperativa_nome')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.cooperativa_nome.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.moradia_atual.hasError}}">
+                              <span class="input-group-addon">Morada atual</span>
+                              <select
+                                [(ngModel)]="habitacoes.moradia_atual"
+                                (focus)="limparCampos('moradia_atual')"
+                                name="moradia_atual"
+                                class="form-control input-sm">
+                                <option *ngFor="let ma of moradaAtual" [value]="ma.descricao"> {{ ma.descricao }} </option>
+                              </select>
+                            </div>
+                            <p class="text-danger">{{hasError.moradia_atual.msg}}</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.ocupacao.hasError}}">
+                              <span class="input-group-addon">Ocupação</span>
+                              <input
+                                type="text"
+                                name="ocupacao"
+                                [(ngModel)]="habitacoes.ocupacao"
+                                (focus)="limparCampos('ocupacao')"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                            <p class="text-danger">{{hasError.ocupacao.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-3 col-xs-3 p-l-3 p-t-3">
+                          <div>
+                            <div class="input-group espacamento">
+                              <span class="input-group-addon">Telefone</span>
+                              <input
+                                type="text"
+                                name="telefone"
+                                id="telefone"
+                                [(ngModel)]="telefone"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                          <button class="btn btn-block btn-sm btn-primary" (click)="addTelefone($event);">Adicionar</button>
+                        </div>
+                        <div class="col-md-3 col-xs-3 p-l-3 p-t-3">
+                          <p *ngFor="let tf of telefones; let i = index;">
+                            <button class="btn btn-danger btn-sm glyphicon glyphicon-remove" (click)="removeItemTelefones($event, i)"></button>
+                            {{tf}}
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div id="aba-progrmas-sociais" class="tab-pane fade">
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.cras.hasError}}">
+                              <span class="input-group-addon s50">Participa do Grupo CRAS</span>
+                              <button type="button" class="btn {{habitacoes.cras ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.cras = true;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{habitacoes.cras ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Sim</span>
+                              </button>
+                              <button type="button" class="btn {{!habitacoes.cras ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.cras = false;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{!habitacoes.cras ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Não</span>
+                              </button>
+                            </div>
+                            <p class="text-danger">{{hasError.cras.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.caps.hasError}}">
+                              <span class="input-group-addon s50">Participa do Grupo CAPS</span>
+                              <button type="button" class="btn {{habitacoes.caps ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.caps = true;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{habitacoes.caps ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Sim</span>
+                              </button>
+                              <button type="button" class="btn {{!habitacoes.caps ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.caps = false;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{!habitacoes.caps ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Não</span>
+                              </button>
+                            </div>
+                            <p class="text-danger">{{hasError.caps.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                          <div>
+                            <div class="input-group espacamento {{hasError.associacao_moradores.hasError}}">
+                              <span class="input-group-addon s50">Participa da Associação de Moradores</span>
+                              <button type="button" class="btn {{habitacoes.associacao_moradores ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.associacao_moradores = true;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{habitacoes.associacao_moradores ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Sim</span>
+                              </button>
+                              <button type="button" class="btn {{!habitacoes.associacao_moradores ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.associacao_moradores = false;" style="padding: 4px 10px;">
+                                <span class="glyphicon {{!habitacoes.associacao_moradores ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                                <span>Não</span>
+                              </button>
+                            </div>
+                            <p class="text-danger">{{hasError.associacao_moradores.msg}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                  <div class="row">
+                    <div class="col-md-10 col-xs-10 p-l-10 p-t-10">
+                      <!--
+                      -->
+                        <button class="btn btn-block btn-sm btn-primary" (click)="visualizar($event);">View</button>
+                    </div>
+                    <div class="col-md-2 col-xs-2 p-l-2 p-t-2" [hidden]="!mostrarFormulario">
+                      <button class="btn btn-block btn-sm btn-primary" (click)="addGrupoFamiliar($event);">Adicionar</button>
+                    </div>
+                  </div>
+
+                  <div [hidden]="mostrarFormulario">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Nome Completo</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_nome_completo"
+                              [(ngModel)]="composicaoFamiliar.nome_completo"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Vínculo</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_vinculo"
+                              [(ngModel)]="composicaoFamiliar.vinculo"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Data Nascimento</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_dt_nascimento"
+                              id="composicao_familiar_dt_nascimento"
+                              [(ngModel)]="composicaoFamiliar.dt_nascimento"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">CPF</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_cpf"
+                              id="composicao_familiar_cpf"
+                              [(ngModel)]="composicaoFamiliar.cpf"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">RG</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_rg"
+                              [(ngModel)]="composicaoFamiliar.rg"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Escolaridade</span>
+                            <select
+                              [(ngModel)]="composicaoFamiliar.escolaridade"
+                              name="composicao_familiar_escolaridade"
+                              class="form-control input-sm">
+                              <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.descricao"> {{ escolaridade.descricao }} </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Atividade</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_atividade"
+                              [(ngModel)]="composicaoFamiliar.atividade"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Renda</span>
+                            <input
+                              type="text"
+                              name="composicaoFamiliar_renda"
+                              id="composicao_familiar_renda"
+                              [(ngModel)]="composicaoFamiliar.renda"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon s60">PCD</span>
+                            <button type="button" class="btn {{composicaoFamiliar.pcd ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.pcd = true;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{composicaoFamiliar.pcd ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Sim</span>
+                            </button>
+                            <button type="button" class="btn {{!composicaoFamiliar.pcd ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.pcd = false;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{!composicaoFamiliar.pcd ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Não</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Qual é o tipo de deficiência:</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_pcd_qual"
+                              [(ngModel)]="composicaoFamiliar.pcd_qual"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon s60">Doença Grave:</span>
+                            <button type="button" class="btn {{composicaoFamiliar.doenca_grave ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.doenca_grave = true;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{composicaoFamiliar.doenca_grave ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Sim</span>
+                            </button>
+                            <button type="button" class="btn {{!composicaoFamiliar.doenca_grave ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.doenca_grave = false;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{!composicaoFamiliar.doenca_grave ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Não</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Qual é o tipo de doença grave:</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_doenca_qual"
+                              [(ngModel)]="composicaoFamiliar.doenca_qual"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon s60">Bolsa Família:</span>
+                            <button type="button" class="btn {{composicaoFamiliar.bolsa_familia ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.bolsa_familia = true;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{composicaoFamiliar.bolsa_familia ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Sim</span>
+                            </button>
+                            <button type="button" class="btn {{!composicaoFamiliar.bolsa_familia ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.bolsa_familia = false;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{!composicaoFamiliar.bolsa_familia ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Não</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Valor Bolsa Família:</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_bolsa_familia_valor"
+                              id="composicao_familiar_bolsa_familia_valor"
+                              [(ngModel)]="composicaoFamiliar.bolsa_familia_valor"
+                              class="form-control input-sm text-right"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon s60">BPC:</span>
+                            <button type="button" class="btn {{composicaoFamiliar.bpc ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.bpc = true;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{composicaoFamiliar.bpc ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Sim</span>
+                            </button>
+                            <button type="button" class="btn {{!composicaoFamiliar.bpc ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.bpc = false;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{!composicaoFamiliar.bpc ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Não</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Valor BPC:</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_bpc_valor"
+                              id="composicao_familiar_bpc_valor"
+                              [(ngModel)]="composicaoFamiliar.bpc_valor"
+                              class="form-control input-sm text-right"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon s60">Inscrito Cadastro Único:</span>
+                            <button type="button" class="btn {{composicaoFamiliar.inscrito_cadastro_unico ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.inscrito_cadastro_unico = true;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{composicaoFamiliar.inscrito_cadastro_unico ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Sim</span>
+                            </button>
+                            <button type="button" class="btn {{!composicaoFamiliar.inscrito_cadastro_unico ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); composicaoFamiliar.inscrito_cadastro_unico = false;" style="padding: 4px 10px;">
+                              <span class="glyphicon {{!composicaoFamiliar.inscrito_cadastro_unico ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                              <span>Não</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-8 col-xs-8 p-l-8 p-t-8">
+                        <div>
+                          <div class="input-group espacamento">
+                            <span class="input-group-addon">Inscrição Cadastro Único:</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_inscricao_cadastro_unico"
+                              [(ngModel)]="composicaoFamiliar.inscricao_cadastro_unico"
+                              class="form-control input-sm text-right"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8 col-xs-8 p-l-8 p-t-8"></div>
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <button class="btn btn-block btn-sm btn-primary" (click)="addNewGrupoFamiliar($event);">Adicionar</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row" [hidden]="!mostrarFormulario">
+                    <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                      <table class="table table-condensed tbl-grupo-familiar">
+                        <thead>
+                          <tr>
+                            <th>Opção</th>
+                            <th>Dados</th>
+                            <th>Renda</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let gf of grupoFamiliar; let i = index;">
+                            <template [ngIf]="!gf.deleted">
+                              <td>
+                                <button class="btn btn-danger btn-sm glyphicon glyphicon-remove" (click)="removeItemGrupoFamiliar($event, gf, i)"></button>
+                              </td>
+
+                              <td>
+                                <p><span class="span-bold">Nome:</span><span>{{gf.nome_completo}}</span></p>
+                                <p><span class="span-bold">Vínculo:</span><span>{{gf.vinculo}}</span></p>
+                                <p><span class="span-bold">Data Nascimento:</span><span>{{gf.dt_nascimento}}</span></p>
+                                <p><span class="span-bold">CPF:</span><span>{{gf.cpf}}</span></p>
+                                <p><span class="span-bold">RG:</span><span>{{gf.rg}}</span></p>
+                                <p><span class="span-bold">Escolaridade:</span><span>{{gf.escolaridade}}</span></p>
+                                <p>
+                                  <span class="span-bold">PCD:</span><span>{{(gf.pcd)?"Sim":"Não"}}</span>
+                                  <span class="span-bold">Qual é o tipo de deficiência:</span><span>{{gf.pcd_qual}}</span>
+                                </p>
+                                <p>
+                                  <span class="span-bold">Doença Grave:</span><span>{{(gf.doenca_grave)?"Sim":"Não"}}</span>
+                                  <span class="span-bold">Qual é o tipo de doença grave:</span><span>{{gf.doenca_qual}}</span>
+                                </p>
+                                <p>
+                                  <span class="span-bold">Bolsa Família:</span><span>{{(gf.bolsa_familia)?"Sim":"Não"}}</span>
+                                  <span class="span-bold">Valor Bolsa Família - R$:</span><span>{{gf.bolsa_familia_valor}}</span>
+                                </p>
+
+                                <p>
+                                  <span class="span-bold">BPC:</span><span>{{(gf.bpc)?"Sim":"Não"}}</span>
+                                  <span class="span-bold">Valor BPC - R$:</span><span>{{gf.bpc_valor}}</span>
+                                </p>
+
+                                <p>
+                                  <span class="span-bold">Inscrito Cadastro Único:</span><span>{{(gf.inscrito_cadastro_unico)?"Sim":"Não"}}</span>
+                                  <span class="span-bold">Inscrição Cadastro Único:</span><span>{{gf.inscricao_cadastro_unico}}</span>
+                                </p>
+                              </td>
+                              <td class="text-right">
+                                {{gf.renda}}
+                              </td>
+                            </template>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="2">Quantidade de familiares: {{qtdFamiliares}}</td>
+                            <td class="text-right">{{valor}}</td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div id="menu4" class="tab-pane fade">
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                      <div>
+                        <div class="input-group espacamento {{hasError.comprovante_residencia.hasError}}">
+                          <span class="input-group-addon s50">Comprovante de Residência</span>
+                          <button type="button" class="btn {{habitacoes.comprovante_residencia ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_residencia = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.comprovante_residencia ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.comprovante_residencia ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_residencia = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.comprovante_residencia ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.comprovante_residencia.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                      <div>
+                        <div class="input-group espacamento {{hasError.comprovante_tempo_campo_bom.hasError}}">
+                          <span class="input-group-addon s50">Comprovante do tempo em Campo Bom</span>
+                          <button type="button" class="btn {{habitacoes.comprovante_tempo_campo_bom ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_tempo_campo_bom = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.comprovante_tempo_campo_bom ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.comprovante_tempo_campo_bom ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_tempo_campo_bom = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.comprovante_tempo_campo_bom ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.comprovante_tempo_campo_bom.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                      <div>
+                        <div class="input-group espacamento {{hasError.comprovante_cpf_rg.hasError}}">
+                          <span class="input-group-addon s50">Comprovante de CPF e RG dos titulares</span>
+                          <button type="button" class="btn {{habitacoes.comprovante_cpf_rg ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_cpf_rg = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.comprovante_cpf_rg ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.comprovante_cpf_rg ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_cpf_rg = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.comprovante_cpf_rg ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.comprovante_cpf_rg.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                      <div>
+                        <div class="input-group espacamento {{hasError.comprovante_renda.hasError}}">
+                          <span class="input-group-addon s50">Comprovante de renda</span>
+                          <button type="button" class="btn {{habitacoes.comprovante_renda ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_renda = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.comprovante_renda ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.comprovante_renda ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_renda = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.comprovante_renda ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.comprovante_renda.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                      <div>
+                        <div class="input-group espacamento {{hasError.comprovante_deficiencia_doenca_grave.hasError}}">
+                          <span class="input-group-addon s50">Comprovante de deficiência ou doença grave</span>
+                          <button type="button" class="btn {{habitacoes.comprovante_deficiencia_doenca_grave ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_deficiencia_doenca_grave = true;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{habitacoes.comprovante_deficiencia_doenca_grave ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Sim</span>
+                          </button>
+                          <button type="button" class="btn {{!habitacoes.comprovante_deficiencia_doenca_grave ? 'btn-primary' : 'btn-default'}}" (click)="setCheckbox($event); habitacoes.comprovante_deficiencia_doenca_grave = false;" style="padding: 4px 10px;">
+                            <span class="glyphicon {{!habitacoes.comprovante_deficiencia_doenca_grave ? 'glyphicon-check' : 'glyphicon-unchecked'}}"></span>
+                            <span>Não</span>
+                          </button>
+                        </div>
+                        <p class="text-danger">{{hasError.comprovante_deficiencia_doenca_grave.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                      <div>
+                        <div class="input-group espacamento {{hasError.observacao.hasError}}">
+                          <span class="input-group-addon">Observação </span>
+                          <input
+                            type="text"
+                            name="observacao"
+                            [(ngModel)]="habitacoes.observacao"
+                            (focus)="limparCampos('observacao')"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.observacao.msg}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt15">
+                <div class="col-md-8 col-xs-8 p-l-8 p-t-8"></div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button class="btn btn-block btn-sm btn-primary" (click)="limparForm($event);">Limpar</button>
+                </div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button class="btn btn-block btn-sm btn-success">Salvar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

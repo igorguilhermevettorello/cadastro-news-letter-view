@@ -44,7 +44,7 @@ var CabecalhoComponent = (function () {
     };
     CabecalhoComponent.prototype.user = function (event) {
         event.preventDefault();
-        this.router.navigate(['./usuarios/cadastrar']);
+        this.router.navigate(['./menus-listar/', 2]);
     };
     CabecalhoComponent.prototype.setUserName = function (userName) {
         if (localStorage.getItem("userName") === null)

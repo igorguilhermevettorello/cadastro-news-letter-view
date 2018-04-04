@@ -180,5 +180,9 @@ export class PerfilComponent implements OnInit, AfterViewInit {
     this.alertStatus = alertStatus;
   }
 
+  public fecharView(event) {
+    event.preventDefault();
+    this.router.navigate(['./principal/']);
+  }
 
 }

@@ -160,6 +160,10 @@ var PerfilComponent = (function () {
         this.mensagem = msg;
         this.alertStatus = alertStatus;
     };
+    PerfilComponent.prototype.fecharView = function (event) {
+        event.preventDefault();
+        this.router.navigate(['./principal/']);
+    };
     __decorate([
         core_1.ViewChild(cabecalho_component_1.CabecalhoComponent), 
         __metadata('design:type', cabecalho_component_1.CabecalhoComponent)

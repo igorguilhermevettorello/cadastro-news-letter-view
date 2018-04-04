@@ -20,17 +20,15 @@ export class MenuComponent implements OnInit, AfterViewInit {
   @Input() menu: string = null;
   @Input() userName: string = null;
 
-  __menu: Array<Object> = []
+  // __menu: Array<Object> = [];
+
+  private menus: Array<Object> = [];
+  private menus_aux: Array<Object> = [];
 
   constructor(
     private http: Http,
     private globals: Globals,
     private router: Router ) {
-
-    this.userName =
-      (localStorage.getItem("userName") === null) ?
-        null : localStorage.getItem("userName");
-
   }
 
   public setUserName(userName) {
@@ -39,7 +37,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(){
-    this.getMenu(1);
+    this.getMenuUser();
+    //this.getMenu(1);
     //this.menu = '<li class="treeview" title="2-6"><a href="#"><i class="fa fa-share"></i><span>Menu</span><span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu"><li class="treeview li-2" title="4-5"><a href="#" style="padding-left: 15px">Usuários<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-2"><li class="treeview li-4"><a href="#" style="padding-left: 30px">cadastrar</a></li><li class="treeview li-5"><a href="#" style="padding-left: 30px">listar</a></li></ul></li><li class="treeview li-6" title="7-8"><a href="#" style="padding-left: 15px">Pessoas<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-6"><li class="treeview li-7"><a href="#" style="padding-left: 30px">cadastrar</a></li><li class="treeview li-8" title="9-10"><a href="#" style="padding-left: 30px">listar<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-8"><li class="treeview li-9" title="11-12"><a href="#" style="padding-left: 45px">simples<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-9"><li class="treeview li-11"><a href="#" style="padding-left: 60px">nome</a></li><li class="treeview li-12" title="13"><a href="#" style="padding-left: 60px">sei lá<span class="pull-right pull-right-menu"><span class="glyphicon glyphicon-chevron-left rotate"></span></span></a><ul class="treeview-menu ul-12"><li class="treeview li-13"><a href="#" style="padding-left: 75px">sei la 2</a></li></ul></li></ul></li><li class="treeview li-10"><a href="#" style="padding-left: 45px">elaborada</a></li></ul></li></ul></li></ul></li>';
   }
 
@@ -130,36 +129,107 @@ export class MenuComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public getMenu(id) {
+//  public getMenu(id) {
+//
+//    let headers = new Headers();
+//    let authToken = localStorage.getItem('auth_token');
+//    headers.append('Content-Type', 'application/json');
+//    headers.append('x-access-token', authToken);
+//
+//    let url = this.globals.url + '/menus/menu/' + id;
+//    this.http.get(url, { headers: headers })
+//      .subscribe((res) => {
+//
+//        let menu = res.json();
+//
+//        this.__menu.push(menu);
+//
+//        localStorage.setItem('menu', JSON.stringify(this.__menu));
+//
+//        if (id == 1) this.createHtmlMenu(menu);
+//
+//        if (typeof menu.sub != 'undefined') menu.sub.map(item => this.getMenu(item.id));
+//
+//      }, error =>  {
+//        console.log('error', error);
+//        if (error.status == 0) {
+//         this.mensagem = "Não foi possível conectar com o servidor.";
+//        } else if (error.status == 401) {
+//         this.mensagem = "Usuário não encotrado.";
+//        } else {
+//          this.mensagem = "Erro inesperado. Entre em contato com administrador.";
+//        }
+//      });
+//  }
+
+  public getMenuUser() {
 
     let headers = new Headers();
     let authToken = localStorage.getItem('auth_token');
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', authToken);
 
-    let url = this.globals.url + '/menus/menu/' + id;
+    let url = this.globals.url + '/menu/user';
     this.http.get(url, { headers: headers })
       .subscribe((res) => {
-
-        let menu = res.json();
-
-        this.__menu.push(menu);
-
-        localStorage.setItem('menu', JSON.stringify(this.__menu));
-
-        if (id == 1) this.createHtmlMenu(menu);
-
-        if (typeof menu.sub != 'undefined') menu.sub.map(item => this.getMenu(item.id));
-
+        this.menus_aux = res.json();
+        this.organizarMenu(null);
       }, error =>  {
         console.log('error', error);
+
         if (error.status == 0) {
-         this.mensagem = "Não foi possível conectar com o servidor.";
+          this.setMensagem('alert-danger', 'Não foi possível conectar com o servidor.', 'Erro', null);
         } else if (error.status == 401) {
-         this.mensagem = "Usuário não encotrado.";
+          this.setMensagem('alert-danger', 'Usuário não encotrado.', 'Erro', null);
+        } else if (error.status == 400) {
+          let msg = error.json();
+          if (typeof msg.msg == "undefined") {
+            this.setMensagem('alert-danger', 'Usuário não encotrado.', 'Erro', null);
+          } else {
+            this.setMensagem('alert-danger', msg.msg, 'Erro', null);
+          }
+        } else if (error.status == 500) {
+          this.setMensagem('alert-danger', 'Ocorreu um erro interno. Nossa equipe já está trabalhando para resolve-lo.', 'Erro', null);
         } else {
-          this.mensagem = "Erro inesperado. Entre em contato com administrador.";
+          this.setMensagem('alert-danger', 'Erro inesperado. Entre em contato com administrador.', 'Erro', null);
         }
       });
+  }
+
+  public organizarMenu(item) {
+    item = (typeof item == "undefined" || item === null) ? this.menus_aux.filter((item,index) => index == this.menus.length).map(item => item) : item;
+    item = (typeof item.length == "undefined") ? item : item[0];
+
+    if (this.menus.length == 0) {
+      item.padding = 0;
+      item.color = (item.ativo) ? '#000000' : '#FFFFFF';
+      this.menus.push(item);
+    }
+
+    this.menus_aux.filter(mn => mn.menu_id == item.id).map(mn => {
+      mn.padding = (typeof item.padding == "undefined") ? 15 : item.padding + 15;
+      mn.color = (item.ativo) ? '#000000' : '#FFFFFF';
+      this.menus.push(mn);
+      this.organizarMenu(mn);
+    });
+  }
+
+  public setMensagem(status, msg, alertStatus, event) {
+    if (event) event.preventDefault();
+    //this.status = status;
+    this.mensagem = msg;
+    //this.alertStatus = alertStatus;
+  }
+
+  public redirect(event, mn) {
+    event.preventDefault();
+    console.log(`./${mn.controller}-${mn.acao}`);
+    if (mn.controller != "" && mn.controller != null) {
+      if (mn.acao != "" && mn.acao != null){
+        this.router.navigate([`./${mn.controller}-${mn.acao}`]);
+      } else {
+        this.router.navigate([`./${mn.controller}`]);
+      }
+    }
   }
 }

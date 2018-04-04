@@ -19,6 +19,12 @@
   -->
 
   <div style="clear: both;">
-    <ul class="sidebar-nav" [innerHTML]="menu | filtroMenu"></ul>
+    <ul class="sidebar-nav">
+      <li *ngFor="let mn of menus" class="treeview">
+        <a [style.paddingLeft.px]="mn.padding" (click)="redirect($event, mn)">
+            {{mn.descricao}}
+        </a>
+      </li>
+    </ul>
   </div>
 </div>

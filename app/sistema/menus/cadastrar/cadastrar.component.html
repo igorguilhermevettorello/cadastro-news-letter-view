@@ -1,0 +1,109 @@
+<div id="wrapper">
+  <menu></menu>
+  <cabecalho></cabecalho>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <main class="col-md-12 col-xs-12 p-l-12 p-t-12">
+        <ul class="breadcrumb">
+          <li><a href="#">Menu</a> <span class="divider"></span></li>
+          <li><a href="#">Menus</a> <span class="divider"></span></li>
+          <li class="active">Cadastrar</li>
+        </ul>
+        <form (submit)="beforeSave($event)">
+          <div class="panel panel-form-app">
+            <div class="panel-heading clearfix">
+              <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Cadastrar</h4>
+              <div class="btn-group pull-right">
+                <a href="#" class="btn btn-danger btn-xs" (click)="fecharView($event)">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
+                <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
+                <strong>{{alertStatus}}!</strong> {{mensagem}}
+              </div>
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home" id="tab-info">Informações</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                  <div>
+                    <div class="input-group espacamento {{hasError.descricao.hasError}}">
+                      <span class="input-group-addon">Descrição</span>
+                      <input
+                        type="text"
+                        name="descricao"
+                        [(ngModel)]="menu.descricao"
+                        (focus)="limparCampos('descricao')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.descricao.msg}}</p>
+                  </div>
+
+                  <div>
+                    <div class="input-group espacamento {{hasError.controller.hasError}}">
+                      <span class="input-group-addon">Controller</span>
+                      <input
+                        type="text"
+                        name="controller"
+                        [(ngModel)]="menu.controller"
+                        (focus)="limparCampos('controller')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.controller.msg}}</p>
+                  </div>
+
+                  <div>
+                    <div class="input-group espacamento {{hasError.acao.hasError}}">
+                      <span class="input-group-addon">Action</span>
+                      <input
+                        type="text"
+                        name="acao"
+                        [(ngModel)]="menu.acao"
+                        (focus)="limparCampos('acao')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.acao.msg}}</p>
+                  </div>
+
+                  <div>
+                    <div class="input-group espacamento {{hasError.menu_id.hasError}}">
+                      <span class="input-group-addon">Menu</span>
+                      <select
+                        [(ngModel)]="menu.menu_id"
+                        (focus)="limparCampos('menu_id')"
+                        name="menu_id"
+                        class="form-control input-sm">
+                        <option *ngFor="let mn of selectMenu" [value]="mn.id"> {{ mn.descricao }} </option>
+                      </select>
+                    </div>
+                    <p class="text-danger">{{hasError.menu_id.msg}}</p>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row mt15">
+                <div class="col-md-8 col-xs-8 p-l-8 p-t-8"></div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button class="btn btn-block btn-sm btn-primary" (click)="limparForm($event);">Limpar</button>
+                </div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button class="btn btn-block btn-sm btn-success">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+</div>

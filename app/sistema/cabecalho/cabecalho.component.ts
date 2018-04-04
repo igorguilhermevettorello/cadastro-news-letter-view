@@ -50,7 +50,7 @@ export class CabecalhoComponent {
 
   user(event) {
     event.preventDefault();
-    this.router.navigate(['./usuarios/cadastrar']);
+    this.router.navigate(['./menus-listar/', 2]);
   }
 
   public setUserName(userName) {

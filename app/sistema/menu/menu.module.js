@@ -11,13 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var menu_component_1 = require('./menu.component');
 var menu_pipe_1 = require('./menu.pipe');
+var common_1 = require('@angular/common');
 var MenuModule = (function () {
     function MenuModule() {
     }
     MenuModule = __decorate([
         core_1.NgModule({
             declarations: [menu_component_1.MenuComponent, menu_pipe_1.FiltroMenu],
-            exports: [menu_component_1.MenuComponent, menu_pipe_1.FiltroMenu]
+            exports: [menu_component_1.MenuComponent, menu_pipe_1.FiltroMenu],
+            imports: [common_1.CommonModule]
         }), 
         __metadata('design:paramtypes', [])
     ], MenuModule);

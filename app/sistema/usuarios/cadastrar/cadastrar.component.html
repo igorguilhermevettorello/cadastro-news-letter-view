@@ -1,123 +1,123 @@
 <div id="wrapper">
   <menu></menu>
   <cabecalho></cabecalho>
-
   <!-- Page Content -->
   <div id="page-content-wrapper">
     <div class="container-fluid">
       <main class="col-md-12 col-xs-12 p-l-12 p-t-12">
-
-<ul class="breadcrumb">
-  <li><a href="#">Início</a> <span class="divider"></span></li>
-  <li><a href="#">Biblioteca</a> <span class="divider"></span></li>
-  <li class="active">Dados</li>
-</ul>
-
-
-<div class="panel panel-form-app">
-  <div class="panel-heading clearfix">
-    <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Panel header</h4>
-    <div class="btn-group pull-right">
-      <a href="#" class="btn btn-danger btn-xs">
-        <span class="glyphicon glyphicon-remove"></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="panel-body">
-
-    <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-      <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-      <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    </ul>
-
-    <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
-        <h3>HOME</h3>
-        <p>Some content.</p>
-      </div>
-      <div id="menu1" class="tab-pane fade">
-        <h3>Menu 1</h3>
-        <p>Some content in menu 1.</p>
-      </div>
-      <div id="menu2" class="tab-pane fade">
-        <h3>Menu 2</h3>
-        <p>Some content in menu 2.</p>
-      </div>
-    </div>
-
-    <br />
-
-    <div [innerHTML]="usuario.nome | filtroMenu"></div>
-
-    <form>
-
-      <div class="form-group"> <!-- Date input -->
-        <label class="control-label" for="date">Date</label>
-        <input class="form-control data-picker" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-      </div>
-
-      <div class="container">
-          <div class="row">
-              <div class='col-sm-6'>
-                  <div class="form-group">
-                      <div class='input-group date' id='datetimepicker3'>
-                          <input type='text' class="form-control" />
-                          <span class="input-group-addon">
-                              <span class="glyphicon glyphicon-time"></span>
-                          </span>
-                      </div>
-                  </div>
+        <ul class="breadcrumb">
+          <li><a href="#">Menu</a> <span class="divider"></span></li>
+          <li><a href="#">Usuários</a> <span class="divider"></span></li>
+          <li class="active">Cadastrar</li>
+        </ul>
+        <form (submit)="beforeSave($event)">
+          <div class="panel panel-form-app">
+            <div class="panel-heading clearfix">
+              <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Cadastrar</h4>
+              <div class="btn-group pull-right">
+                <a href="#" class="btn btn-danger btn-xs" (click)="fecharView($event)" >
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
               </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
+                <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
+                <strong>{{alertStatus}}!</strong> {{mensagem}}
+              </div>
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home" id="tab-info">Informações</a></li>
+                <li><a data-toggle="tab" href="#login" id="tab-login">Login</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                  <div>
+                    <div class="input-group espacamento {{hasError.nome.hasError}}">
+                      <span class="input-group-addon">Nome</span>
+                      <input
+                        type="text"
+                        name="nome"
+                        [(ngModel)]="pessoa.nome"
+                        (focus)="limparCampos('nome')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.nome.msg}}</p>
+                  </div>
+
+                  <div>
+                    <div class="input-group espacamento {{hasError.email.hasError}}">
+                      <span class="input-group-addon">E-mail</span>
+                      <input
+                        type="text"
+                        name="email"
+                        [(ngModel)]="pessoa.email"
+                        (focus)="limparCampos('email')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.email.msg}}</p>
+                  </div>
+                </div>
+                <div id="login" class="tab-pane fade">
+                  <div>
+                    <div class="input-group espacamento {{hasError.login.hasError}}">
+                      <span class="input-group-addon">Login</span>
+                      <input
+                        type="text"
+                        name="login"
+                        [(ngModel)]="usuario.login"
+                        (focus)="limparCampos('login')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.login.msg}}</p>
+                  </div>
+
+                  <div>
+                    <div class="input-group espacamento {{hasError.password.hasError}}">
+                      <span class="input-group-addon">Senha</span>
+                      <input
+                        type="password"
+                        name="password"
+                        [(ngModel)]="usuario.password"
+                        (focus)="limparCampos('password')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.password.msg}}</p>
+                  </div>
+
+                  <div>
+                    <div class="input-group espacamento {{hasError.confirma.hasError}}">
+                      <span class="input-group-addon">Confirmar</span>
+                      <input
+                        type="password"
+                        name="confirma"
+                        [(ngModel)]="usuario.confirma"
+                        (focus)="limparCampos('confirma')"
+                        class="form-control input-sm"
+                        autocomplete="off">
+                    </div>
+                    <p class="text-danger">{{hasError.confirma.msg}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt15">
+                <div class="col-md-8 col-xs-8 p-l-8 p-t-8"></div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button class="btn btn-block btn-sm btn-primary" (click)="limparForm($event);">Limpar</button>
+                </div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button class="btn btn-block btn-sm btn-success">Salvar</button>
+                </div>
+              </div>
+            </div>
           </div>
-      </div>
-
-      <div class="input-group">
-        <span class="input-group-addon">@</span>
-        <input type="text" class="form-control input-sm" placeholder="Username" >
-      </div>
-
-
-
-
-      <div class="input-group has-error">
-        <span class="input-group-addon">@</span>
-        <input type="text" name="nome" [(ngModel)]="usuario.nome" class="form-control input-sm"  autocomplete="off">
-      </div>
-
-      <div class="input-group has-error">
-        <span class="input-group-addon">@</span>
-        <input type="text" name="nome" [(ngModel)]="usuario.nome" class="form-control input-sm"  autocomplete="off">
-      </div>
-    </form>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th class="col-md-1">Column 1</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <td>Data</td>
-                    <td>Content</td>
-                </tr>
-                <tr>
-                    <td>Data</td>
-                    <td>Content</td>
-                </tr>
-                <tr>
-                    <td>Data</td>
-                    <td>Content</td>
-                </tr>
-        </tbody>
-    </table>
-  </div>
-</div>
-
-
+        </form>
       </main>
     </div>
   </div>

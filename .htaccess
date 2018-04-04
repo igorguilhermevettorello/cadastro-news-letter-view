@@ -4,6 +4,5 @@
   RewriteCond %{REQUEST_FILENAME} -l [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^.*$ - [NC,L]
-
-  RewriteRule ^(.*) /sistema/index.html [NC,L]
+  RewriteRule ^(.*) /cadastro-habitacional-view/index.html [NC,L]
 </IfModule>

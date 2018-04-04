@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>teste</title>
+    <style type="text/css">
+      body {
+        width: 500px;
+        font-size: 7px
+      }
+
+      .tbl-dependentes {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .tbl-dependentes td{
+        border: 1px solid lightgray;
+        padding: 5px
+      }
+
+      .tbl-dependentes thead {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+    </style>
+  </head>
+  <body style="margin: 0px; padding: 0px;">
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <td style="width: 10%">
+            <img src="http://localhost:3100/public/pdf/imagem/logo_gestao.png" style="width: 100%;">
+          </td>
+          <td style="width: 90%">
+            <p style="text-align: center;">SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SOCIAL E HABITAÇÃO - SEDESH</p>
+            <p style="text-align: center;">CADASTRO HABITACIONAL</p>
+          </td>
+        </tr>
+      </thead>
+    </table>
+    <hr />
+    <table style="width: 100%">
+      <tbody>
+        <tr>
+          <td style="width: 33%">
+            <span style="font-weight: bold;">Número da Inscrição:</span>
+            <span style="padding-left: 5px">000001</span>
+          </td>
+          <td style="width: 33%">
+            <span style="font-weight: bold;">Titular:</span>
+            <span style="padding-left: 5px">PCD</span>
+          </td>
+          <td style="width: 33%">
+            <span style="font-weight: bold;">Data:</span>
+            <span style="padding-left: 5px">01/04/2018</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <table style="width: 100%">
+      <tbody>
+        <tr>
+          <td>
+            <p style="margin: 0px;">
+              <span style="font-weight: bold;">Titular 1:</span>
+              <span style="padding-left: 5px">${habitacao.titular_1}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Naturalidade:</span>
+              <span style="padding-left: 5px">${habitacao.naturalidade_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Pai:</span>
+              <span style="padding-left: 5px">${habitacao.pai_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Mãe:</span>
+              <span style="padding-left: 5px">${habitacao.mae_1}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Data Nascimento:</span>
+              <span style="padding-left: 5px">${habitacao.nascimento_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Estado Civil:</span>
+              <span style="padding-left: 5px">${habitacao.estado_civil_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Escolaridade:</span>
+              <span style="padding-left: 5px">${habitacao.escolaridade_1}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="font-weight: bold;">CPF:</span>
+              <span style="padding-left: 5px">${habitacao.cpf_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="font-weight: bold;">RG:</span>
+              <span style="padding-left: 5px">${habitacao.rg_1}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Atividade:</span>
+              <span style="padding-left: 5px">${habitacao.atividade_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Renda:</span>
+              <span style="padding-left: 5px">${habitacao.renda_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Informal:</span>
+              <span style="padding-left: 5px">${habitacao.informal_1}</span>
+
+              <span style="font-weight: bold;">Formal:</span>
+              <span style="padding-left: 5px">${habitacao.formal_1}</span>
+            </p>
+
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Empresa:</span>
+              <span style="padding-left: 5px">${habitacao.empresa_1}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px;">
+              <span style="font-weight: bold;">Titular 2:</span>
+              <span style="padding-left: 5px">${habitacao.titular_2}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Naturalidade:</span>
+              <span style="padding-left: 5px">${habitacao.naturalidade_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Pai:</span>
+              <span style="padding-left: 5px">${habitacao.pai_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Mãe:</span>
+              <span style="padding-left: 5px">${habitacao.mae_2}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Data Nascimento:</span>
+              <span style="padding-left: 5px">${habitacao.nascimento_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Estado Civil:</span>
+              <span style="padding-left: 5px">${habitacao.estado_civil_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 33%; float: left;">
+              <span style="font-weight: bold;">Escolaridade:</span>
+              <span style="padding-left: 5px">${habitacao.escolaridade_2}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="font-weight: bold;">CPF:</span>
+              <span style="padding-left: 5px">${habitacao.cpf_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="font-weight: bold;">RG:</span>
+              <span style="padding-left: 5px">${habitacao.rg_2}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Atividade:</span>
+              <span style="padding-left: 5px">${habitacao.atividade_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Renda:</span>
+              <span style="padding-left: 5px">${habitacao.renda_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Informal:</span>
+              <span style="padding-left: 5px">${habitacao.informal_2}</span>
+
+              <span style="font-weight: bold;">Formal:</span>
+              <span style="padding-left: 5px">${habitacao.formal_2}</span>
+            </p>
+
+            <p style="margin: 0px; width: 25%; float: left;">
+              <span style="font-weight: bold;">Empresa:</span>
+              <span style="padding-left: 5px">${habitacao.empresa_2}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 100%; float: left;">
+              <span style="font-weight: bold;">Endereço:</span>
+              <span style="padding-left: 5px">${habitacao.endereco} - ${habitacao.numero} | Bairro: ${habitacao.bairro}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 100%; float: left;">
+              <span style="font-weight: bold;">Telefones:</span>
+              <span style="padding-left: 5px">${habitacao.telefones}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 100%; float: left;">
+              <span style="font-weight: bold;">Tempo de moradia em Campo Bom</span>
+              <span style="padding-left: 10px; padding-right: 10px;"> ${habitacao.tempo_moradia_anos} ano(s) e ${habitacao.tempo_moradia_meses} mes(es)</span>
+              <span style="font-weight: bold;">Município de procedência</span>
+              <span style="padding-left: 10px; padding-right: 10px;">${habitacao.procedencia_municipio}</span>
+              <span style="font-weight: bold;">UF de procedência</span>
+              <span style="padding-left: 10px; padding-right: 10px;">${habitacao.procedencia_uf}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 100%; float: left;">
+              <span style="font-weight: bold;">Possui inscrição em Cooperativa sem definição do lote:</span>
+              <span style="padding-left: 5px">${habitacao.cooperativa_inscricao}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 100%; float: left;">
+              <span style="font-weight: bold;">Moradia atual:</span>
+              <span style="padding-left: 5px">${habitacao.moradia_atual}</span>
+              <span style="font-weight: bold;">Nome de Ocupação:</span>
+              <span style="padding-left: 5px">${habitacao.ocupacao}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 15%; float: left;">
+              <span style="font-weight: bold; width: 25%">Família Constituida:</span>
+            </p>
+            <p style="margin: 0px; width: 85%; float: left;">
+              <span style="padding-left: 5px">${habitacao.familia_constituida}</span>
+            </p>
+
+            <p style="margin: 0px; width: 15%; float: left;">
+              <span style="font-weight: bold; width: 25%">Idoso Sozinho:</span>
+            </p>
+            <p style="margin: 0px; width: 85%; float: left;">
+              <span style="padding-left: 5px">${habitacao.idoso_sozinho}</span>
+            </p>
+
+            <p style="margin: 0px; width: 15%; float: left;">
+              <span style="font-weight: bold; width: 25%">PCD Sozinho:</span>
+            </p>
+            <p style="margin: 0px; width: 85%; float: left;">
+              <span style="padding-left: 5px">${habitacao.pcd_sozinho}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">PCD:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.pcd}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">PCD cadeirante:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.pcd_cadeirante}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">PCD na família:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.pcd_familia}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">PCD chefe da família:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.pcd_chefe_familia}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">Qual PCD há na família:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.pcd_qual}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">Doença Grave:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.doenca_grave}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">Doença Grave na família:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.doenca_grave_familia}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">Doença Grave chefe da família:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.doenca_grave_chefe_familia}</span>
+            </p>
+
+            <p style="margin: 0px; width: 30%; float: left;">
+              <span style="font-weight: bold; width: 25%">Qual Doença Grave há na família:</span>
+            </p>
+            <p style="margin: 0px; width: 70%; float: left;">
+              <span style="padding-left: 5px">${habitacao.doenca_grave_qual}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Participa de Programas</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Bolsa Família:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.bolsa_familia}</span>
+            </p>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Valor:</span>
+            </p>
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="padding-left: 5px">R$ ${habitacao.bolsa_familia_valor}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">BPC:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.bcp}</span>
+            </p>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Valor:</span>
+            </p>
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="padding-left: 5px">R$ ${habitacao.bcp_valor}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Inscrito Cadastro Único:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.inscrito_cadastro_unico}</span>
+            </p>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Número da Inscrição:</span>
+            </p>
+            <p style="margin: 0px; width: 50%; float: left;">
+              <span style="padding-left: 5px">${habitacao.inscricao_cadastro_unico}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">CRAS:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.cras}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">CAPS:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.caps}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Associação de Moradores:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.associacao_moradores}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Benefício Idoso ou Deficiente:</span>
+            </p>
+            <p style="margin: 0px; width: 10%; float: left;">
+              <span style="padding-left: 5px">${habitacao.beneficio_idoso_deficiente}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Composição Familiar</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table class="tbl-dependentes">
+              <thead>
+                <tr>
+                  <td>Dados</td>
+                  <td>Renda</td>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                    <p><span class="span-bold">Nome:</span><span>${item.nome_completo}</span></p>
+                    <p><span class="span-bold">Vínculo:</span><span>${item.vinculo}</span></p>
+                    <p><span class="span-bold">Data Nascimento:</span><span>${item.dt_nascimento}</span></p>
+                    <p><span class="span-bold">CPF:</span><span>${item.cpf}</span></p>
+                    <p><span class="span-bold">RG:</span><span>${item.rg}</span></p>
+                    <p><span class="span-bold">Escolaridade:</span><span>${item.escolaridade}</span></p>
+                    <p>
+                      <span class="span-bold">PCD:</span><span>${item.pcd}</span>
+                      <span class="span-bold">Qual é o tipo de deficiência:</span><span>${item.pcd_qual}</span>
+                    </p>
+                    <p>
+                      <span class="span-bold">Doença Grave:</span><span>${item.doenca_grave}</span>
+                      <span class="span-bold">Qual é o tipo de doença grave:</span><span>${item.doenca_qual}</span>
+                    </p>
+                    <p>
+                      <span class="span-bold">Bolsa Família:</span><span>${item.bolsa_familia}</span>
+                      <span class="span-bold">Valor Bolsa Família - R$:</span><span>${item.bolsa_familia_valor}</span>
+                    </p>
+                    <p>
+                      <span class="span-bold">BPC:</span><span>${item.bpc}</span>
+                      <span class="span-bold">Valor BPC - R$:</span><span>${item.bpc_valor}</span>
+                    </p>
+                    <p>
+                      <span class="span-bold">Inscrito Cadastro Único:</span><span>${item.inscrito_cadastro_unico}</span>
+                      <span class="span-bold">Inscrição Cadastro Único:</span><span>${item.inscricao_cadastro_unico}</span>
+                    </p>
+                  </td>
+                  <td>${item.inscricao_cadastro_unico}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Número de Membros da família: 2</td>
+                  <td>5.200,00</td>
+                </tr>
+              </tfoot>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; text-align: center;">
+              <span>Declaro que não possuo nenhum imóvel a nível de território nacional
+                    como titular, promitente comprador ou secionário, de apartamento,
+                    de lote, de gleba, individual ou em condomínio.</span>
+            </p>
+
+            <p style="margin: 0px; text-align: center;">
+              <span>Declaro também que as informações por mim prestadas nesta ficha
+                    são a expressão de verdade. A documentação que apresento será
+                    disponibilizada por mim no momento da contratação, caso seja
+                    beneficiado. A presente declaração é feita sob as penas da lei,
+                    portanto, em caso de falsidade o declarante ficará sujeito às
+                    sanções criminais, civis, administrativas previstas na legislação
+                    própria.</span>
+            </p>
+
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="border-top: 1px solid black; width: 50%; text-align: center; margin-left: 25%;">Assinatura do Titular</p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 20%; float: left;">
+              <span style="font-weight: bold; width: 25%">Documentos Apresentados</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px; width: 60%; float: left;">
+              <span style="font-weight: bold; width: 25%">Comprovante de Residência:</span>
+            </p>
+            <p style="margin: 0px; width: 40%; float: left;">
+              <span style="padding-left: 5px">${habitacao.comprovante_residencia}</span>
+            </p>
+            <p style="margin: 0px; width: 60%; float: left;">
+              <span style="font-weight: bold; width: 25%">Comprovante de do tempo em Campo Bom:</span>
+            </p>
+            <p style="margin: 0px; width: 40%; float: left;">
+              <span style="padding-left: 5px">${habitacao.comprovante_tempo_campo_bom}</span>
+            </p>
+
+            <p style="margin: 0px; width: 60%; float: left;">
+              <span style="font-weight: bold; width: 25%">CPF e RG dos titulares:</span>
+            </p>
+            <p style="margin: 0px; width: 40%; float: left;">
+              <span style="padding-left: 5px">${habitacao.comprovante_cpf_rg}</span>
+            </p>
+
+            <p style="margin: 0px; width: 60%; float: left;">
+              <span style="font-weight: bold; width: 25%">Comprovante de Renda:</span>
+            </p>
+            <p style="margin: 0px; width: 40%; float: left;">
+              <span style="padding-left: 5px">${habitacao.comprovante_renda}</span>
+            </p>
+
+            <p style="margin: 0px; width: 60%; float: left;">
+              <span style="font-weight: bold; width: 25%">Comprovante de deficiência ou doença grave:</span>
+            </p>
+            <p style="margin: 0px; width: 40%; float: left;">
+              <span style="padding-left: 5px">${habitacao.comprovante_deficiencia_doenca_grave}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="margin: 0px;">
+              <span style="font-weight: bold;">Observação:</span>
+              <span style="padding-left: 5px">${habitacao.observacao}</span>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <hr />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <br /><br />
+            <p style="border-top: 1px solid black; width: 50%; text-align: center; margin-left: 25%;">Responsável pelo preenchimento</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br><br><hr><br><br>
+
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <td style="width: 10%">
+            <img src="http://localhost:3100/public/pdf/imagem/logo_gestao.png" style="width: 100%;">
+          </td>
+          <td style="width: 90%">
+            <p style="text-align: center;">SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SOCIAL E HABITAÇÃO - SEDESH</p>
+            <p style="text-align: center;">CADASTRO HABITACIONAL</p>
+          </td>
+        </tr>
+      </thead>
+    </table>
+    <hr />
+    <table style="width: 100%">
+      <tbody>
+        <tr>
+          <td style="width: 33%">
+            <span style="font-weight: bold;">Número da Inscrição:</span>
+            <span style="padding-left: 5px">000001</span>
+          </td>
+          <td style="width: 33%">
+            <span style="font-weight: bold;">Titular:</span>
+            <span style="padding-left: 5px">PCD</span>
+          </td>
+          <td style="width: 33%">
+            <span style="font-weight: bold;">Data:</span>
+            <span style="padding-left: 5px">01/04/2018</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <table style="width: 100%">
+      <tbody>
+        <tr>
+          <td>
+            <p style="margin: 0px;">
+              <span style="font-weight: bold;">Titular 1:</span>
+              <span style="padding-left: 5px">${habitacao.titular_1}</span>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

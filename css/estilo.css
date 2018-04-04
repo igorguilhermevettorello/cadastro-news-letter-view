@@ -392,3 +392,52 @@ fieldset[disabled] .btn-remove.active {
   padding-bottom: 7px;
   margin-bottom: 10px;
 }
+
+select,
+.list-group a,
+.pagination a {
+  border-radius: 0px !important;
+}
+
+.list-group a {
+  padding: 4px 15px !important;
+}
+
+.list-group{
+  box-shadow: 0px 0px 0px;
+}
+
+.btn-check-list {
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  box-shadow: 0px 0px 0px;
+}
+
+/*
+input[type='checkbox'].icon-checkbox{display:none}
+input[type='checkbox'].icon-checkbox+label .unchecked{display:inline}
+input[type='checkbox'].icon-checkbox+label .checked{display:none}
+input[type='checkbox']:checked.icon-checkbox{display:none}
+input[type='checkbox']:checked.icon-checkbox+label .unchecked{display:none}
+*/
+input[type='checkbox']:checked.icon-checkbox+label .checked{display:inline}
+
+
+.tbl-grupo-familiar input,
+.tbl-grupo-familiar select {
+  border-radius: 0px;
+}
+
+.s50 {
+  width: 75%;
+  text-align: left;
+}
+
+.s60 {
+  width: 60%;
+  text-align: left;
+}
+
+.span-bold {
+  font-weight: bold;
+}

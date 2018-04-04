@@ -34,6 +34,11 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('menu');
+    localStorage.removeItem('userCreatedAt');
+    localStorage.removeItem('userImagem');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userUpdatedAt');
     this.loggedIn = false;
   }
 
