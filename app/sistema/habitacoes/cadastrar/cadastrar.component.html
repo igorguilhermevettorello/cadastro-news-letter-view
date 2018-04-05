@@ -25,10 +25,10 @@
 
           <div class="panel-body">
 
-              <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
-                <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
-                <strong>{{alertStatus}}!</strong> {{mensagem}}
-              </div>
+            <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
+              <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
+              <strong>{{alertStatus}}!</strong> {{mensagem}}
+            </div>
 
             <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#home" id="tab-info">Titular 1</a></li>
@@ -36,6 +36,7 @@
               <li><a data-toggle="tab" href="#menu3">Composição Familiar</a></li>
               <li><a data-toggle="tab" href="#menu2">Informações Família</a></li>
               <li><a data-toggle="tab" href="#menu4">Documentos</a></li>
+              <li><a data-toggle="tab" href="" style="font-weight: bold;">R$ {{totalizador}}</a></li>
             </ul>
             <form (submit)="beforeSave($event)">
               <div class="tab-content">
@@ -237,7 +238,8 @@
                             name="renda_1"
                             id="renda_1"
                             [(ngModel)]="habitacoes.renda_1"
-                            (focus)="limparCampos('renda_1')"
+                            (focus)="limparCampos('renda_1');"
+                            (blur) = "calcularTotalizador();"
                             class="form-control input-sm text-right"
                             autocomplete="off">
                         </div>
@@ -692,6 +694,7 @@
                             id="renda_2"
                             [(ngModel)]="habitacoes.renda_2"
                             (focus)="limparCampos('renda_2')"
+                            (blur) = "calcularTotalizador();"
                             class="form-control input-sm text-right"
                             autocomplete="off">
                         </div>
@@ -1208,8 +1211,8 @@
                   <div class="row">
                     <div class="col-md-10 col-xs-10 p-l-10 p-t-10">
                       <!--
-                      -->
                         <button class="btn btn-block btn-sm btn-primary" (click)="visualizar($event);">View</button>
+                      -->
                     </div>
                     <div class="col-md-2 col-xs-2 p-l-2 p-t-2" [hidden]="!mostrarFormulario">
                       <button class="btn btn-block btn-sm btn-primary" (click)="addGrupoFamiliar($event);">Adicionar</button>
@@ -1263,6 +1266,7 @@
                         </div>
                       </div>
 
+
                       <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
                         <div>
                           <div class="input-group espacamento">
@@ -1277,6 +1281,25 @@
                           </div>
                         </div>
                       </div>
+
+
+                      <!--
+                      <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
+                        <div>
+                          <div class="input-grouViewp espacamento">
+                            <span class="input-group-addon">CPF</span>
+                            <input
+                              type="text"
+                              name="composicao_familiar_cpf"
+                              id="composicao_familiar_cpf"
+                              [(ngModel)]="composicaoFamiliar.cpf"
+                              class="form-control input-sm"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                      -->
+
                     </div>
                     <div class="row">
                       <div class="col-md-4 col-xs-4 p-l-4 p-t-4">
@@ -1687,10 +1710,10 @@
               <div class="row mt15">
                 <div class="col-md-8 col-xs-8 p-l-8 p-t-8"></div>
                 <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
-                  <button class="btn btn-block btn-sm btn-primary" (click)="limparForm($event);">Limpar</button>
+                  <button [disabled]="!habilitarSave" class="btn btn-block btn-sm btn-primary" (click)="limparForm($event);">Limpar</button>
                 </div>
                 <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
-                  <button class="btn btn-block btn-sm btn-success">Salvar</button>
+                  <button [disabled]="!habilitarSave" class="btn btn-block btn-sm btn-success">Salvar</button>
                 </div>
               </div>
             </form>

@@ -21,6 +21,8 @@ export class HabitacoesCadastrarComponent implements OnInit, AfterViewInit {
   @Input() valor: string = "0,00";
   @Input() qtdFamiliares: number = 0;
   @Input() mostrarFormulario: boolean = true;
+  @Input() totalizador: string = "0,00";
+  @Input() habilitarSave: boolean = true;
 
   @Input() hasError: any = {
     titular_1: {hasError: null, msg: null},
@@ -590,6 +592,7 @@ export class HabitacoesCadastrarComponent implements OnInit, AfterViewInit {
   public addGrupoFamiliar(event){
     event.preventDefault();
     this.mostrarFormulario = !this.mostrarFormulario;
+    this.habilitarSave = !this.habilitarSave;
 //    let familia: any = {
 //      id: "",
 //      nome_completo: "",
@@ -636,6 +639,7 @@ export class HabitacoesCadastrarComponent implements OnInit, AfterViewInit {
 
     this.grupoFamiliar.push(familia);
     this.mostrarFormulario = !this.mostrarFormulario;
+    this.habilitarSave = !this.habilitarSave;
     this.calcularTotal();
   }
 
@@ -844,6 +848,17 @@ export class HabitacoesCadastrarComponent implements OnInit, AfterViewInit {
   public removeItemTelefones(event, index){
     event.preventDefault();
     this.telefones.splice(index, 1);
+  }
+
+  public calcularTotalizador() {
+    let val1 = $("#renda_1").val() || "0,00";
+    let val2 = $("#renda_2").val() || "0,00";
+    val1 = val1.replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(",", ".");
+    val2 = val2.replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(",", ".");
+    val1 = parseFloat(parseFloat(val1).toFixed(2));
+    val2 = parseFloat(parseFloat(val2).toFixed(2));
+    let total = (val1 + val2);
+    this.totalizador = this.number_format(total, 2, ',', '.');
   }
 
   public limparForm(event) {

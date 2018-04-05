@@ -68,9 +68,8 @@ var HabitacoesListarComponent = (function () {
         this.mensagem = msg;
         this.alertStatus = alertStatus;
     };
-    HabitacoesListarComponent.prototype.gerarPdf = function (id) {
+    HabitacoesListarComponent.prototype.gerarPdf = function (id, url) {
         var _this = this;
-        var url = this.globals.url + '/pdf/gerar/' + id;
         var headers = new http_1.Headers();
         var authToken = localStorage.getItem('auth_token');
         headers.append('Content-Type', 'application/json');
@@ -159,7 +158,12 @@ var HabitacoesListarComponent = (function () {
             this.router.navigate(['./principal/']);
         }
         else if (opcao == 'pdf') {
-            this.gerarPdf(elemento.id);
+            var url = this.globals.url + '/pdf/gerar/' + elemento.id;
+            this.gerarPdf(elemento.id, url);
+        }
+        else if (opcao == 'recibo') {
+            var url = this.globals.url + '/pdf/recibo/' + elemento.id;
+            this.gerarPdf(elemento.id, url);
         }
         else if (opcao == 'deletar') {
             this.deletar(elemento.id);

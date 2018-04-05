@@ -73,8 +73,7 @@ export class HabitacoesListarComponent implements OnInit, AfterViewInit  {
     this.alertStatus = alertStatus;
   }
 
-  public gerarPdf(id) {
-    let url = this.globals.url + '/pdf/gerar/' + id;
+  public gerarPdf(id, url) {
     let headers = new Headers();
     let authToken = localStorage.getItem('auth_token');
     headers.append('Content-Type', 'application/json');
@@ -153,7 +152,11 @@ export class HabitacoesListarComponent implements OnInit, AfterViewInit  {
     } else if (opcao == 'principal') {
       this.router.navigate(['./principal/']);
     } else if (opcao == 'pdf') {
-      this.gerarPdf(elemento.id);
+      let url = this.globals.url + '/pdf/gerar/' + elemento.id;
+      this.gerarPdf(elemento.id, url);
+    } else if (opcao == 'recibo') {
+      let url = this.globals.url + '/pdf/recibo/' + elemento.id;
+      this.gerarPdf(elemento.id, url);
     } else if (opcao == 'deletar') {
       this.deletar(elemento.id);
     }

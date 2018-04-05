@@ -24,6 +24,8 @@ var HabitacoesCadastrarComponent = (function () {
         this.valor = "0,00";
         this.qtdFamiliares = 0;
         this.mostrarFormulario = true;
+        this.totalizador = "0,00";
+        this.habilitarSave = true;
         this.hasError = {
             titular_1: { hasError: null, msg: null },
             naturalidade_1: { hasError: null, msg: null },
@@ -576,6 +578,7 @@ var HabitacoesCadastrarComponent = (function () {
     HabitacoesCadastrarComponent.prototype.addGrupoFamiliar = function (event) {
         event.preventDefault();
         this.mostrarFormulario = !this.mostrarFormulario;
+        this.habilitarSave = !this.habilitarSave;
         //    let familia: any = {
         //      id: "",
         //      nome_completo: "",
@@ -619,6 +622,7 @@ var HabitacoesCadastrarComponent = (function () {
         };
         this.grupoFamiliar.push(familia);
         this.mostrarFormulario = !this.mostrarFormulario;
+        this.habilitarSave = !this.habilitarSave;
         this.calcularTotal();
     };
     HabitacoesCadastrarComponent.prototype.deleteComposicaoFamiliar = function (id, index) {
@@ -813,6 +817,16 @@ var HabitacoesCadastrarComponent = (function () {
         event.preventDefault();
         this.telefones.splice(index, 1);
     };
+    HabitacoesCadastrarComponent.prototype.calcularTotalizador = function () {
+        var val1 = $("#renda_1").val() || "0,00";
+        var val2 = $("#renda_2").val() || "0,00";
+        val1 = val1.replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(",", ".");
+        val2 = val2.replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(".", "").replace(",", ".");
+        val1 = parseFloat(parseFloat(val1).toFixed(2));
+        val2 = parseFloat(parseFloat(val2).toFixed(2));
+        var total = (val1 + val2);
+        this.totalizador = this.number_format(total, 2, ',', '.');
+    };
     HabitacoesCadastrarComponent.prototype.limparForm = function (event) {
         event.preventDefault();
         this.hasError = {
@@ -993,6 +1007,14 @@ var HabitacoesCadastrarComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Boolean)
     ], HabitacoesCadastrarComponent.prototype, "mostrarFormulario", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], HabitacoesCadastrarComponent.prototype, "totalizador", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], HabitacoesCadastrarComponent.prototype, "habilitarSave", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
