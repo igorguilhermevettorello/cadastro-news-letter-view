@@ -32,6 +32,8 @@ var listar_component_3 = require('./sistema/permissoes/listar/listar.component')
 var cadastrar_component_3 = require('./sistema/permissoes/cadastrar/cadastrar.component');
 var listar_component_4 = require('./sistema/habitacoes/listar/listar.component');
 var cadastrar_component_4 = require('./sistema/habitacoes/cadastrar/cadastrar.component');
+var listar_component_5 = require('./sistema/news/listar/listar.component');
+var cadastrar_component_5 = require('./sistema/news/cadastrar/cadastrar.component');
 var WindowRef_1 = require('./WindowRef');
 var app_routes_1 = require('./app.routes');
 var AppModule = (function () {
@@ -61,7 +63,9 @@ var AppModule = (function () {
                 listar_component_3.PermissoesListarComponent,
                 cadastrar_component_3.PermissoesCadastrarComponent,
                 listar_component_4.HabitacoesListarComponent,
-                cadastrar_component_4.HabitacoesCadastrarComponent
+                cadastrar_component_4.HabitacoesCadastrarComponent,
+                listar_component_5.NewsListarComponent,
+                cadastrar_component_5.NewsCadastrarComponent
             ],
             providers: [
                 globals_1.Globals,

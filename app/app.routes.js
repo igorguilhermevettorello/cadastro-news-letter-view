@@ -12,6 +12,8 @@ var listar_component_3 = require('./sistema/permissoes/listar/listar.component')
 var cadastrar_component_3 = require('./sistema/permissoes/cadastrar/cadastrar.component');
 var listar_component_4 = require('./sistema/habitacoes/listar/listar.component');
 var cadastrar_component_4 = require('./sistema/habitacoes/cadastrar/cadastrar.component');
+var listar_component_5 = require('./sistema/news/listar/listar.component');
+var cadastrar_component_5 = require('./sistema/news/cadastrar/cadastrar.component');
 var appRoutes = [
     { path: "", component: login_component_1.LoginComponent, pathMatch: 'full' },
     { path: "login", component: login_component_1.LoginComponent },
@@ -32,7 +34,11 @@ var appRoutes = [
     { path: "habitacoes-listar", component: listar_component_4.HabitacoesListarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
     { path: "habitacoes-listar/:id", component: listar_component_4.HabitacoesListarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
     { path: "habitacoes-cadastrar", component: cadastrar_component_4.HabitacoesCadastrarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
-    { path: "habitacoes-cadastrar/:id", component: cadastrar_component_4.HabitacoesCadastrarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] }
+    { path: "habitacoes-cadastrar/:id", component: cadastrar_component_4.HabitacoesCadastrarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
+    { path: "news-listar", component: listar_component_5.NewsListarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
+    { path: "news-listar/:id", component: listar_component_5.NewsListarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
+    { path: "news-cadastrar", component: cadastrar_component_5.NewsCadastrarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] },
+    { path: "news-cadastrar/:id", component: cadastrar_component_5.NewsCadastrarComponent, canActivate: [logged_in_guard_1.LoggedInGuard] }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes, { useHash: true });
 //# sourceMappingURL=app.routes.js.map

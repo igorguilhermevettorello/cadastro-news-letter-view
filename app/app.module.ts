@@ -25,6 +25,8 @@ import { PermissoesListarComponent } from './sistema/permissoes/listar/listar.co
 import { PermissoesCadastrarComponent } from './sistema/permissoes/cadastrar/cadastrar.component';
 import { HabitacoesListarComponent } from './sistema/habitacoes/listar/listar.component';
 import { HabitacoesCadastrarComponent } from './sistema/habitacoes/cadastrar/cadastrar.component';
+import { NewsListarComponent } from './sistema/news/listar/listar.component';
+import { NewsCadastrarComponent } from './sistema/news/cadastrar/cadastrar.component';
 
 import { WindowRef } from './WindowRef';
 
@@ -53,7 +55,9 @@ import { routing } from './app.routes';
     PermissoesListarComponent,
     PermissoesCadastrarComponent,
     HabitacoesListarComponent,
-    HabitacoesCadastrarComponent
+    HabitacoesCadastrarComponent,
+    NewsListarComponent,
+    NewsCadastrarComponent
   ],
   providers: [
     Globals,

@@ -1,0 +1,260 @@
+<div id="wrapper">
+  <menu></menu>
+  <cabecalho></cabecalho>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <main class="col-md-12 col-xs-12 p-l-12 p-t-12">
+        <ul class="breadcrumb">
+          <li><a href="#">Menu</a> <span class="divider"></span></li>
+          <li><a href="#">News</a> <span class="divider"></span></li>
+          <li class="active">Cadastrar</li>
+        </ul>
+        <form (submit)="beforeSave($event)">
+          <div class="panel panel-form-app">
+            <div class="panel-heading clearfix">
+              <h4 class="panel-title pull-left" style="padding-top: 2.5px;">Cadastrar</h4>
+              <div class="btn-group pull-right">
+                <a href="#" class="btn btn-danger btn-xs">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="alert {{status}} alert-dismissible alert-sistema" *ngIf="mensagem">
+                <a href="#" class="close" (click)="setMensagem(null, null, null, $event)">&times;</a>
+                <strong>{{alertStatus}}!</strong> {{mensagem}}
+              </div>
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home" id="tab-info">News Letter</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+
+                  <div class="row" *ngIf="!habilitarSave">
+                    <div class="col-md-9 col-xs-9 p-l-9 p-t-9">
+                      <div>
+                        <div class="input-group espacamento {{hasError.imagem.hasError}}">
+                          <span class="input-group-addon">Imagem</span>
+                          <input
+                            type="file"
+                            name="imagem"
+                            #fileInput
+                            [(ngModel)]="news.imagem"
+                            (focus)="limparCampos('imagem');"
+                            class="form-control input-sm"
+                            autocomplete="off">
+                        </div>
+                        <p class="text-danger">{{hasError.imagem.msg}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-3 p-l-3 p-t-3">
+                      <button [disabled]="habilitarSave" class="btn btn-block btn-sm btn-primary" (click)="uploadImagem($event);">Upload</button>
+                      <!--
+                      <button [disabled]="habilitarSave" class="btn btn-block btn-sm btn-primary" (click)="uploadVisualizar($event);">visulalizar</button>
+                      -->
+                    </div>
+                  </div>
+
+                  <div class="row" *ngIf="habilitarSave">
+
+                    <div class="col-md-9 col-xs-9 p-l-9 p-t-9" style="margin:0px; padding: 0px" id="html-news-letter">
+
+                      <div style="margin:0px; padding: 0px"
+                           [style.width.px]="width"
+                           [style.height.px]="height">
+
+                        <img src="{{imgSource}}"
+                             [style.width.px]="width"
+                             [style.height.px]="height"
+                             usemap="#planetmap">
+
+                        <map name="planetmap">
+                          <area *ngFor="let link of links" shape="rect" coords="{{link.coordenada1}},{{link.coordenada2}},{{link.coordenada3}},{{link.coordenada4}}" href="{{link.link}}" alt="{{link.link}}">
+                        </map>
+
+
+                        <div *ngFor="let link of links"
+                             [hidden]="link.deleted"
+                             [style.left.px]="link.coordenada1"
+                             [style.top.px]="link.coordenada2"
+                             [style.width.px]="(link.coordenada3-link.coordenada1)"
+                             [style.height.px]="(link.coordenada4-link.coordenada2)"
+                             style="position:absolute;
+                                    background-color: rgba(0,0,0,0.5);"></div>
+
+                        <!--
+                        <a *ngFor="let link of links"
+                           [style.font-size.px]="link.fontSize"
+                           [style.color]="link.color"
+                           [style.border]="link.border"
+                           style="position: absolute;
+                                  background-color: transparent;"
+                           href="{{link.link}}"
+                           target="_blank">{{link.descricao}}</a>-->
+
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-xs-3 p-l-3 p-t-3">
+                      <div class="row">
+                        <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                          Imagem
+                        </div>
+                        <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                          <div>
+                            <div class="input-group espacamento">
+                              <span class="input-group-addon">Largura</span>
+                              <input
+                                type="text"
+                                name="width"
+                                [(ngModel)]="width"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                              <span class="input-group-addon">px</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                          <div>
+                            <div class="input-group espacamento">
+                              <span class="input-group-addon">Altura</span>
+                              <input
+                                type="text"
+                                name="height"
+                                [(ngModel)]="height"
+                                class="form-control input-sm"
+                                autocomplete="off">
+                              <span class="input-group-addon">px</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn btn-block btn-sm btn-primary" (click)="adicionaLink($event);">Adiciona Link</button>
+
+                      <br>
+
+                      <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                        <div *ngFor="let link of links; let i = index;" class="row" >
+                          <template [ngIf]="!link.deleted">
+                            <div [hidden]="!link.visivel">
+
+                              <div class="row" style="border:1px solid lightgray;margin-left: 0px;margin-right: 0px;margin-bottom: 10px;">
+                                <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                                  Coordenadas: {{link.coordenada1}},{{link.coordenada2}},{{link.coordenada3}},{{link.coordenada4}}
+                                </div>
+                                <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                                  <button class="btn btn-block btn-sm btn-danger" (click)="removerLink($event, link);">Remover</button>
+                                </div>
+                                <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                                  <button class="btn btn-block btn-sm btn-primary" (click)="ocultarMostrarLink($event, link);">Mostrar</button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div [hidden]="link.visivel">
+                              <div class="row" style="border:1px solid lightgray;margin-left: 0px;margin-right: 0px;margin-bottom: 10px;">
+                                <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                                  <div>
+                                    <div class="input-group espacamento">
+                                      <span class="input-group-addon">Coord.1</span>
+                                      <input
+                                        type="text"
+                                        name="link{{i}}coordenada1"
+                                        [(ngModel)]="link.coordenada1"
+                                        class="form-control input-sm"
+                                        autocomplete="off">
+                                      <span class="input-group-addon">px</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                                  <div>
+                                    <div class="input-group espacamento">
+                                      <span class="input-group-addon">Coord.2</span>
+                                      <input
+                                        type="text"
+                                        name="link{{i}}coordenada2"
+                                        [(ngModel)]="link.coordenada2"
+                                        class="form-control input-sm"
+                                        autocomplete="off">
+                                      <span class="input-group-addon">px</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                                  <div>
+                                    <div class="input-group espacamento">
+                                      <span class="input-group-addon">Coord.3</span>
+                                      <input
+                                        type="text"
+                                        name="link{{i}}coordenada3"
+                                        [(ngModel)]="link.coordenada3"
+                                        class="form-control input-sm"
+                                        autocomplete="off">
+                                      <span class="input-group-addon">px</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                                  <div>
+                                    <div class="input-group espacamento">
+                                      <span class="input-group-addon">Coord.4</span>
+                                      <input
+                                        type="text"
+                                        name="link{{i}}coordenada4"
+                                        [(ngModel)]="link.coordenada4"
+                                        class="form-control input-sm"
+                                        autocomplete="off">
+                                      <span class="input-group-addon">px</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12 col-xs-12 p-l-12 p-t-12">
+                                  <div>
+                                    <div class="input-group espacamento">
+                                      <span class="input-group-addon">Link</span>
+                                      <input
+                                        type="text"
+                                        name="link{{i}}link"
+                                        [(ngModel)]="link.link"
+                                        class="form-control input-sm"
+                                        autocomplete="off">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                                  <button class="btn btn-block btn-sm btn-danger" (click)="removerLink($event, link);">Remover</button>
+                                </div>
+                                <div class="col-md-6 col-xs-6 p-l-6 p-t-6">
+                                  <button class="btn btn-block btn-sm btn-primary" (click)="ocultarMostrarLink($event, link);">Ocultar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt15">
+                <div class="col-md-8 col-xs-8 p-l-8 p-t-8"></div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button [disabled]="!habilitarSave" class="btn btn-block btn-sm btn-primary" (click)="limparForm($event);">Limpar</button>
+                </div>
+                <div class="col-md-2 col-xs-2 p-l-2 p-t-2">
+                  <button [disabled]="!habilitarSave" class="btn btn-block btn-sm btn-success">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+</div>

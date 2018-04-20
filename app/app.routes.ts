@@ -13,6 +13,8 @@ import { PermissoesListarComponent } from './sistema/permissoes/listar/listar.co
 import { PermissoesCadastrarComponent } from './sistema/permissoes/cadastrar/cadastrar.component';
 import { HabitacoesListarComponent } from './sistema/habitacoes/listar/listar.component';
 import { HabitacoesCadastrarComponent } from './sistema/habitacoes/cadastrar/cadastrar.component';
+import { NewsListarComponent } from './sistema/news/listar/listar.component';
+import { NewsCadastrarComponent } from './sistema/news/cadastrar/cadastrar.component';
 
 const appRoutes: Routes = [
   {path: "", component: LoginComponent, pathMatch: 'full'},
@@ -34,7 +36,11 @@ const appRoutes: Routes = [
   {path: "habitacoes-listar", component: HabitacoesListarComponent, canActivate: [LoggedInGuard]},
   {path: "habitacoes-listar/:id", component: HabitacoesListarComponent, canActivate: [LoggedInGuard]},
   {path: "habitacoes-cadastrar", component: HabitacoesCadastrarComponent, canActivate: [LoggedInGuard]},
-  {path: "habitacoes-cadastrar/:id", component: HabitacoesCadastrarComponent, canActivate: [LoggedInGuard]}
+  {path: "habitacoes-cadastrar/:id", component: HabitacoesCadastrarComponent, canActivate: [LoggedInGuard]},
+  {path: "news-listar", component: NewsListarComponent, canActivate: [LoggedInGuard]},
+  {path: "news-listar/:id", component: NewsListarComponent, canActivate: [LoggedInGuard]},
+  {path: "news-cadastrar", component: NewsCadastrarComponent, canActivate: [LoggedInGuard]},
+  {path: "news-cadastrar/:id", component: NewsCadastrarComponent, canActivate: [LoggedInGuard]}
   //{path: "**", component: PrincipalComponent}
 ];
 
