@@ -23,8 +23,6 @@ import { MenusListarComponent } from './sistema/menus/listar/listar.component';
 import { MenusCadastrarComponent } from './sistema/menus/cadastrar/cadastrar.component';
 import { PermissoesListarComponent } from './sistema/permissoes/listar/listar.component';
 import { PermissoesCadastrarComponent } from './sistema/permissoes/cadastrar/cadastrar.component';
-import { HabitacoesListarComponent } from './sistema/habitacoes/listar/listar.component';
-import { HabitacoesCadastrarComponent } from './sistema/habitacoes/cadastrar/cadastrar.component';
 import { NewsListarComponent } from './sistema/news/listar/listar.component';
 import { NewsCadastrarComponent } from './sistema/news/cadastrar/cadastrar.component';
 
@@ -54,8 +52,6 @@ import { routing } from './app.routes';
     UsuariosCadastrarComponent,
     PermissoesListarComponent,
     PermissoesCadastrarComponent,
-    HabitacoesListarComponent,
-    HabitacoesCadastrarComponent,
     NewsListarComponent,
     NewsCadastrarComponent
   ],

@@ -11,8 +11,6 @@ import { MenusListarComponent } from './sistema/menus/listar/listar.component';
 import { MenusCadastrarComponent } from './sistema/menus/cadastrar/cadastrar.component';
 import { PermissoesListarComponent } from './sistema/permissoes/listar/listar.component';
 import { PermissoesCadastrarComponent } from './sistema/permissoes/cadastrar/cadastrar.component';
-import { HabitacoesListarComponent } from './sistema/habitacoes/listar/listar.component';
-import { HabitacoesCadastrarComponent } from './sistema/habitacoes/cadastrar/cadastrar.component';
 import { NewsListarComponent } from './sistema/news/listar/listar.component';
 import { NewsCadastrarComponent } from './sistema/news/cadastrar/cadastrar.component';
 
@@ -33,10 +31,6 @@ const appRoutes: Routes = [
   {path: "permissoes-listar/:id", component: PermissoesListarComponent, canActivate: [LoggedInGuard]},
   {path: "permissoes-cadastrar", component: PermissoesCadastrarComponent, canActivate: [LoggedInGuard]},
   {path: "permissoes-cadastrar/:id", component: PermissoesCadastrarComponent, canActivate: [LoggedInGuard]},
-  {path: "habitacoes-listar", component: HabitacoesListarComponent, canActivate: [LoggedInGuard]},
-  {path: "habitacoes-listar/:id", component: HabitacoesListarComponent, canActivate: [LoggedInGuard]},
-  {path: "habitacoes-cadastrar", component: HabitacoesCadastrarComponent, canActivate: [LoggedInGuard]},
-  {path: "habitacoes-cadastrar/:id", component: HabitacoesCadastrarComponent, canActivate: [LoggedInGuard]},
   {path: "news-listar", component: NewsListarComponent, canActivate: [LoggedInGuard]},
   {path: "news-listar/:id", component: NewsListarComponent, canActivate: [LoggedInGuard]},
   {path: "news-cadastrar", component: NewsCadastrarComponent, canActivate: [LoggedInGuard]},
