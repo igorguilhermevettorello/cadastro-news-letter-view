@@ -4,7 +4,7 @@ Injectable()
 
 export class Globals {
   //public url : string = 'http://localhost:3100';
-  public url : string = 'https://cadastro-news-server.herokuapp.com/';
+  public url : string = 'https://cadastro-news-server.herokuapp.com';
 
 
   constructor() {}

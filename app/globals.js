@@ -4,7 +4,7 @@ core_1.Injectable();
 var Globals = (function () {
     function Globals() {
         //public url : string = 'http://localhost:3100';
-        this.url = 'https://cadastro-news-server.herokuapp.com/';
+        this.url = 'https://cadastro-news-server.herokuapp.com';
     }
     return Globals;
 }());
