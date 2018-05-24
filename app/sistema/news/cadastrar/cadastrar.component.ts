@@ -98,8 +98,8 @@ export class NewsCadastrarComponent implements OnInit, AfterViewInit {
                        </head>
                        <body>
                          <div style="margin:0px; padding: 0px; width: ${this.width}px; height:${this.height}px">
-                           <img src="${this.imgSource}" width:"${this.width}" height:"${this.height}" usemap="#planetmap">
-                           <map name="planetmap">
+                           <img src="${this.imgSource}" width="${this.width}" height="${this.height}" usemap="#planetmap">
+                           <map name="planetmap" id="planetmap">
                              ${areas}
                            </map>
                          </div>
