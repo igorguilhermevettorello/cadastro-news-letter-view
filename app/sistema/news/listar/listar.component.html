@@ -72,15 +72,7 @@
                              [style.width.px]="list.width"
                              [style.height.px]="list.height" >
 
-                        <textarea
-                          rows="1"
-                          cols="1"
-                          id="input{{i}}descricao"
-                          name="input{{i}}descricao"
-                          style="display: none">
-                          {{list.descricao}}
-                        </textarea>
-
+                        <input id="input{{i}}descricao" type="text" name="input{{i}}descricao" value="{{list.descricao}}" />
                       </td>
                     </tr>
                   </tbody>
