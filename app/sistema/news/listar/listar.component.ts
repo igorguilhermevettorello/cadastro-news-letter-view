@@ -49,9 +49,7 @@ export class NewsListarComponent implements OnInit, AfterViewInit  {
     this.http.get(url, { headers: headers })
       .subscribe((res) => {
         let lista = res.json();
-        console.log("lista", lista);
         this.lista = lista.lista || [];
-        console.log("this.lista", this.lista);
         this.paginacao = lista.paginacao || [];
       }, error =>  {
         console.log('error', error);
@@ -75,7 +73,7 @@ export class NewsListarComponent implements OnInit, AfterViewInit  {
   }
 
   public deletar(id) {
-    let url = this.globals.url + '/habitacoes/habitacao/' + id;
+    let url = this.globals.url + '/news/news/' + id;
     let headers = new Headers();
     let authToken = localStorage.getItem('auth_token');
     headers.append('Content-Type', 'application/json');

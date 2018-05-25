@@ -44,9 +44,7 @@ var NewsListarComponent = (function () {
         this.http.get(url, { headers: headers })
             .subscribe(function (res) {
             var lista = res.json();
-            console.log("lista", lista);
             _this.lista = lista.lista || [];
-            console.log("this.lista", _this.lista);
             _this.paginacao = lista.paginacao || [];
         }, function (error) {
             console.log('error', error);
@@ -71,7 +69,7 @@ var NewsListarComponent = (function () {
     };
     NewsListarComponent.prototype.deletar = function (id) {
         var _this = this;
-        var url = this.globals.url + '/habitacoes/habitacao/' + id;
+        var url = this.globals.url + '/news/news/' + id;
         var headers = new http_1.Headers();
         var authToken = localStorage.getItem('auth_token');
         headers.append('Content-Type', 'application/json');
